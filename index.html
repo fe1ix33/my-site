@@ -131,19 +131,18 @@
             margin-top: 20px;
         }
 
-        /* --- Преимущества (Industrial block) --- */
+        /* --- Преимущества --- */
         .benefits { padding: 100px 0; background: var(--grey); color: var(--white); }
         .benefit-item { display: flex; align-items: flex-start; margin-bottom: 30px; }
         .benefit-icon { color: var(--primary); font-size: 1.5rem; margin-right: 20px; margin-top: 5px; }
         .benefit-text h5 { font-weight: 700; color: var(--white); }
 
-        /* --- Футер и Контакты --- */
+        /* --- Футер --- */
         footer { padding: 80px 0 40px; background: var(--dark); color: var(--white); text-align: center; }
         .contact-phone { font-size: 2.5rem; font-weight: 800; color: var(--primary); text-decoration: none; display: block; margin: 20px 0; }
         .social-links a { color: var(--white); font-size: 2rem; margin: 0 15px; transition: 0.3s; }
         .social-links a:hover { color: var(--primary); }
 
-        /* Адаптивность */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.8rem; }
             .hero { text-align: center; }
@@ -160,7 +159,7 @@
                 <a href="tel:+79833332496" class="text-white text-decoration-none d-none d-md-block fw-bold me-3">
                     <i class="fas fa-phone-alt text-primary me-2"></i> 8 (983) 333-24-96
                 </a>
-                <a href="https://wa.me/79833332496" class="btn btn-sm btn-primary-custom">WhatsApp</a>
+                <a href="https://t.me/79833332496" class="btn btn-sm btn-primary-custom" style="background:#0088cc;">Telegram</a>
             </div>
         </div>
     </nav>
@@ -172,7 +171,7 @@
                 <h1>Тепло в ваш дом <br><span>под ключ</span></h1>
                 <p>Профессиональный монтаж котельных, водяных теплых полов и систем водоснабжения. Работаем по договору с гарантией результата.</p>
                 <div class="hero-btns">
-                    <a href="https://wa.me/79833332496" class="btn-custom btn-primary-custom">Бесплатная смета</a>
+                    <a href="https://t.me/79833332496" class="btn-custom btn-primary-custom" style="background:#0088cc; box-shadow: 0 10px 20px rgba(0, 136, 204, 0.4);"><i class="fab fa-telegram-plane"></i> Telegram</a>
                     <a href="#services" class="btn-custom btn-outline-custom">Наши услуги</a>
                 </div>
             </div>
@@ -184,8 +183,8 @@
             <div class="row g-4">
                 <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
                     <div class="stat-card">
-                        <h2>10+</h2>
-                        <p>Лет опыта</p>
+                        <h2>3+</h2>
+                        <p>Года опыта</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
@@ -196,7 +195,7 @@
                 </div>
                 <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
                     <div class="stat-card">
-                        <h2>350+</h2>
+                        <h2>100+</h2>
                         <p>Объектов</p>
                     </div>
                 </div>
@@ -282,7 +281,7 @@
             <p class="text-muted" data-aos="fade-up">Выезд на замер и составление сметы — бесплатно в черте города</p>
             <a href="tel:+79833332496" class="contact-phone" data-aos="zoom-in">8 (983) 333-24-96</a>
             <div class="social-links mb-5" data-aos="fade-up">
-                <a href="https://wa.me/79833332496"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/79833332496" style="color:#0088cc;"><i class="fab fa-telegram"></i></a>
                 <a href="tel:+79833332496"><i class="fas fa-phone"></i></a>
             </div>
             <p class="small text-muted border-top pt-4">© 2026 Александр Махутов — Инженерные системы в Улан-Удэ</p>
@@ -291,7 +290,6 @@
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Инициализация анимации при скролле
         AOS.init({
             duration: 1000,
             once: true,
