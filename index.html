@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Саша Грей — Инженерные системы в Улан-Удэ</title>
+    <title>Саша Грей — Инженерные системы и отопление в Улан-Удэ</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -13,57 +13,95 @@
     <style>
         :root {
             --primary: #f37021;
-            --dark: #121212;
-            --grey: #1e1e1e;
+            --primary-dark: #d65d18;
+            --dark: #0f0f0f;
+            --grey-bg: #1a1a1a;
+            --grey-light: #2a2a2a;
             --white: #ffffff;
-            --text-light: #f8f9fa;
+            --text-gray: #b0b0b0;
             --tg-color: #0088cc;
         }
 
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--white); color: var(--dark); overflow-x: hidden; }
-
+        /* Базовые настройки */
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--white); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
+        .section-padding { padding: 120px 0; }
+        
         /* Навигация */
-        .navbar { background: rgba(18, 18, 18, 0.98); border-bottom: 2px solid var(--primary); padding: 15px 0; }
-        .navbar-brand { display: flex; align-items: center; gap: 12px; }
-        .logo-img { height: 45px; filter: brightness(0) invert(1); } /* Белый логотип */
-        .navbar-brand b { color: var(--white); font-size: 1.4rem; }
+        .navbar { background: rgba(15, 15, 15, 0.98); border-bottom: 3px solid var(--primary); padding: 15px 0; transition: 0.4s; }
+        .navbar-brand { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 50px; filter: brightness(0) invert(1); }
+        .navbar-brand b { color: var(--white); font-size: 1.6rem; }
         .navbar-brand span { color: var(--primary); }
 
-        /* Главный экран - Расширенный */
+        /* Главный экран (Hero) */
         .hero {
-            min-height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2000');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; color: var(--white); padding: 100px 0;
+            height: 100vh; min-height: 800px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), 
+                        url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2000');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; align-items: center; color: var(--white);
         }
-        .hero h1 { font-weight: 800; font-size: clamp(2.5rem, 8vw, 4.5rem); text-transform: uppercase; margin-bottom: 25px; }
-        .hero h1 span { color: var(--primary); }
-        .btn-tg { background: var(--tg-color); color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; }
-        .btn-tg:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,136,204,0.4); color: white; }
+        .hero-badge { background: rgba(243, 112, 33, 0.15); border: 1px solid var(--primary); color: var(--primary); padding: 10px 25px; border-radius: 50px; display: inline-block; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero h1 { font-size: clamp(2.5rem, 10vw, 5.5rem); line-height: 0.9; margin-bottom: 30px; }
+        .hero h1 span { color: var(--primary); display: block; }
+        .hero p { font-size: 1.3rem; color: var(--text-gray); max-width: 700px; margin-bottom: 50px; }
 
-        /* Секция Статистика */
-        .stats { background: var(--dark); padding: 80px 0; color: white; }
-        .stat-card h2 { font-size: 3.5rem; color: var(--primary); font-weight: 800; }
-        .stat-card p { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        /* Кнопки */
+        .btn-custom { padding: 22px 45px; border-radius: 100px; font-weight: 800; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 15px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .btn-tg { background: var(--tg-color); color: white; border: 2px solid var(--tg-color); }
+        .btn-tg:hover { background: transparent; color: var(--tg-color); transform: translateY(-10px); }
+
+        /* Статистика */
+        .stats-wrap { background: var(--dark); padding: 100px 0; margin-top: -60px; border-radius: 60px 60px 0 0; position: relative; z-index: 10; }
+        .stat-item { text-align: center; color: white; }
+        .stat-item h2 { font-size: 4.5rem; color: var(--primary); margin-bottom: 5px; }
+        .stat-item p { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; opacity: 0.7; }
 
         /* Услуги */
-        .services { padding: 100px 0; background: #fdfdfd; }
-        .service-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; height: 100%; }
-        .service-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .title-block { text-align: center; margin-bottom: 80px; }
+        .title-block h2 { font-size: 3rem; }
+        .title-block h2 span { color: var(--primary); }
+        
+        .service-card {
+            background: white; padding: 60px 40px; border-radius: 40px; border: 1px solid #f0f0f0; height: 100%;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05); transition: 0.4s ease; position: relative;
+        }
+        .service-card:hover { transform: translateY(-20px); border-color: var(--primary); }
+        .service-icon { width: 80px; height: 80px; background: #fff5ef; color: var(--primary); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin-bottom: 30px; }
+        .service-price { font-size: 1.8rem; font-weight: 900; color: var(--primary); margin-top: 25px; display: block; }
 
-        /* Блок Преимуществ - ИСПРАВЛЕНА ЧИТАЕМОСТЬ */
-        .benefits { padding: 100px 0; background: var(--grey); color: white; }
-        .benefit-item { margin-bottom: 35px; }
-        .benefit-item h5 { color: var(--primary); font-weight: 700; margin-bottom: 10px; }
-        .benefit-item p { color: var(--text-light); }
+        /* Преимущества */
+        .dark-section { background: var(--grey-bg); color: white; padding: 120px 0; }
+        .benefit-card { display: flex; gap: 25px; margin-bottom: 40px; }
+        .benefit-icon-box { min-width: 60px; height: 60px; background: var(--primary); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .benefit-content h5 { font-size: 1.4rem; color: var(--white); margin-bottom: 10px; }
+        .benefit-content p { color: var(--text-gray); }
 
-        /* КАРТА */
-        .map-section { padding: 80px 0; background: var(--white); }
-        .map-container { border-radius: 25px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 1px solid #ddd; }
+        /* Этапы работы */
+        .step-item { text-align: center; position: relative; padding: 20px; }
+        .step-number { width: 80px; height: 80px; background: var(--white); border: 4px solid var(--primary); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 900; margin: 0 auto 30px; transition: 0.4s; }
+        .step-item:hover .step-number { background: var(--primary); color: white; transform: rotateY(180deg); }
 
-        footer { padding: 80px 0; background: var(--dark); color: white; text-align: center; }
-        .footer-phone { font-size: 2.5rem; color: var(--primary); text-decoration: none; font-weight: 800; display: block; margin: 20px 0; }
+        /* FAQ */
+        .faq-section { background: #f8f9fa; }
+        .accordion-item { border: none; margin-bottom: 15px; border-radius: 20px !important; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+        .accordion-button { font-weight: 700; padding: 25px; }
+        .accordion-button:not(.collapsed) { background-color: var(--primary); color: white; }
+
+        /* Карта */
+        .map-box { border-radius: 40px; overflow: hidden; height: 500px; border: 10px solid var(--white); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        /* Футер */
+        footer { background: var(--dark); color: white; padding: 100px 0 50px; text-align: center; }
+        .footer-phone { font-size: clamp(2rem, 8vw, 5rem); color: var(--primary); text-decoration: none; font-weight: 900; display: block; margin: 40px 0; transition: 0.3s; }
+        .footer-phone:hover { color: white; scale: 1.05; }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero { text-align: center; }
+            .stats-wrap { margin-top: 0; border-radius: 0; }
+        }
     </style>
 </head>
 <body>
@@ -74,88 +112,105 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/900/900687.png" alt="Logo" class="logo-img">
                 <div><b>САША</b><span> ГРЕЙ</span></div>
             </a>
-            <a href="https://t.me/79833332496" class="btn btn-sm btn-tg" style="padding: 8px 20px;">Telegram</a>
+            <div class="ms-auto">
+                <a href="https://t.me/79833332496" class="btn btn-sm btn-tg px-4">Telegram</a>
+            </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
-            <div data-aos="fade-right">
-                <p class="text-primary fw-bold mb-3" style="letter-spacing: 3px;">УЛАН-УДЭ И БУРЯТИЯ</p>
-                <h1>ИНЖЕНЕРНЫЕ СИСТЕМЫ<br><span>ОТ САШИ ГРЕЙ</span></h1>
-                <p class="fs-5 mb-5 opacity-75" style="max-width: 600px;">Профессиональный монтаж отопления, котельных и водоснабжения. 3 года опыта и более 100 успешно выполненных объектов.</p>
-                <a href="https://t.me/79833332496" class="btn-tg"><i class="fab fa-telegram-plane me-2"></i> НАПИСАТЬ В TELEGRAM</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container text-center">
-            <div class="row g-4">
-                <div class="col-6 col-md-3" data-aos="zoom-in">
-                    <div class="stat-card"><h2>3+</h2><p>Года опыта</p></div>
-                </div>
-                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="stat-card"><h2>100+</h2><p>Объектов</p></div>
-                </div>
-                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="stat-card"><h2>2</h2><p>Года гарантии</p></div>
-                </div>
-                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="stat-card"><h2>15%</h2><p>Скидки в магазинах</p></div>
+            <div data-aos="fade-up" data-aos-duration="1500">
+                <div class="hero-badge">Инженерный перфекционизм</div>
+                <h1>ОТОПЛЕНИЕ<br><span>ОТ САШИ ГРЕЙ</span></h1>
+                <p>Профессиональный монтаж котельных, водяных теплых полов и систем водоснабжения в Улан-Удэ. Экономлю до 15% бюджета на материалах.</p>
+                <div class="d-flex flex-wrap gap-3 mt-5">
+                    <a href="https://t.me/79833332496" class="btn-custom btn-tg"><i class="fab fa-telegram-plane"></i> Обсудить проект</a>
+                    <a href="#services" class="btn-custom btn-outline-light border-2 rounded-pill px-5">Наши услуги</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="services">
+    <section class="stats-wrap">
         <div class="container">
-            <h2 class="text-center fw-extrabold mb-5 text-uppercase">Мои <span>Услуги</span></h2>
+            <div class="row g-5">
+                <div class="col-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-item"><h2>3+</h2><p>Года опыта</p></div>
+                </div>
+                <div class="col-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-item"><h2>100+</h2><p>Объектов</p></div>
+                </div>
+                <div class="col-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-item"><h2>2</h2><p>Года гарантии</p></div>
+                </div>
+                <div class="col-6 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="stat-item"><h2>15%</h2><p>Скидка в Смит</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="title-block" data-aos="fade-up">
+                <h2>МОИ <span>УСЛУГИ</span></h2>
+                <p class="text-muted fs-5">Качество, которое греет десятилетиями</p>
+            </div>
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="service-card">
-                        <i class="fas fa-fire-burner service-icon"></i>
-                        <h4>Котельные</h4>
-                        <p class="text-muted">Монтаж и обвязка котлов любой сложности.</p>
-                        <b class="text-primary">от 15 000 ₽</b>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card text-center">
+                        <div class="service-icon mx-auto"><i class="fas fa-fire-burner"></i></div>
+                        <h4>КОТЕЛЬНЫЕ</h4>
+                        <p class="text-muted">Монтаж и обвязка котлов любой сложности: электро, твердотопливные, газовые.</p>
+                        <span class="service-price">от 15 000 ₽</span>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card">
-                        <i class="fas fa-hot-tub-person service-icon"></i>
-                        <h4>Теплый пол</h4>
-                        <p class="text-muted">Водяной теплый пол с гарантией прогрева.</p>
-                        <b class="text-primary">от 450 ₽/м²</b>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card text-center">
+                        <div class="service-icon mx-auto"><i class="fas fa-temperature-arrow-up"></i></div>
+                        <h4>ТЕПЛЫЙ ПОЛ</h4>
+                        <p class="text-muted">Равномерный прогрев без «зебр». Профессиональный расчет шага трубы.</p>
+                        <span class="service-price">от 450 ₽/м²</span>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card">
-                        <i class="fas fa-droplet service-icon"></i>
-                        <h4>Водопровод</h4>
-                        <p class="text-muted">Разводка воды и установка сантехники.</p>
-                        <b class="text-primary">от 10 000 ₽</b>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card text-center">
+                        <div class="service-icon mx-auto"><i class="fas fa-droplet"></i></div>
+                        <h4>ВОДОПРОВОД</h4>
+                        <p class="text-muted">Разводка труб, установка фильтров, насосных станций и бойлеров.</p>
+                        <span class="service-price">от 10 000 ₽</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="benefits">
+    <section class="dark-section">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center g-5">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h2 class="mb-5 fw-bold">ВАША ВЫГОДА</h2>
-                    <div class="benefit-item">
-                        <h5><i class="fas fa-tag me-2"></i> СКИДКИ ДО 15%</h5>
-                        <p>Помогу сэкономить на материалах в магазинах Смит и Вегос-М за счет моих дилерских скидок.</p>
+                    <h2 class="mb-5">ПОЧЕМУ ВЫБИРАЮТ <span class="text-primary">МЕНЯ</span></h2>
+                    <div class="benefit-card">
+                        <div class="benefit-icon-box"><i class="fas fa-wallet"></i></div>
+                        <div class="benefit-content">
+                            <h5>ЭКОНОМИЯ ДО 50 000 ₽</h5>
+                            <p>За счет моих дилерских скидок в магазинах Смит, Вегос-М и Сантехмаркет материалы обходятся вам значительно дешевле.</p>
+                        </div>
                     </div>
-                    <div class="benefit-item">
-                        <h5><i class="fas fa-shield-check me-2"></i> ГАРАНТИЯ 2 ГОДА</h5>
-                        <p>Работаю официально. Несу полную ответственность за каждый стык и каждый шов.</p>
+                    <div class="benefit-card">
+                        <div class="benefit-icon-box"><i class="fas fa-shield-halved"></i></div>
+                        <div class="benefit-content">
+                            <h5>ОФИЦИАЛЬНАЯ ГАРАНТИЯ</h5>
+                            <p>Я не пропадаю после оплаты. 2 года гарантии на монтаж прописаны в договоре. Спокоен я — спокойны вы.</p>
+                        </div>
                     </div>
-                    <div class="benefit-item">
-                        <h5><i class="fas fa-user-clock me-2"></i> БЕСПЛАТНЫЙ ЗАМЕР</h5>
-                        <p>Приеду на объект, проконсультирую и составлю смету совершенно бесплатно.</p>
+                    <div class="benefit-card">
+                        <div class="benefit-icon-box"><i class="fas fa-microscope"></i></div>
+                        <div class="benefit-content">
+                            <h5>ПЕРФЕКЦИОНИЗМ В ДЕТАЛЯХ</h5>
+                            <p>Каждый стык, каждая труба выравниваются по уровню. Инженерная эстетика — мой стандарт работы.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="zoom-in">
@@ -165,25 +220,97 @@
         </div>
     </section>
 
-    <section class="map-section">
+    <section class="section-padding bg-light">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold">ГДЕ Я <span>РАБОТАЮ</span></h2>
-            <div class="map-container">
-                <iframe src="https://yandex.ru/map-widget/v1/?ll=107.584838%2C51.833507&z=12&l=map" width="100%" height="450" frameborder="0"></iframe>
+            <div class="title-block"><h2>КАК МЫ <span>РАБОТАЕМ</span></h2></div>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h5>ЗАМЕР</h5>
+                        <p class="small text-muted">Выезжаю на объект, делаю точные замеры бесплатно.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h5>СМЕТА</h5>
+                        <p class="small text-muted">Составляю список материалов и расчет работ за 24 часа.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h5>МОНТАЖ</h5>
+                        <p class="small text-muted">Завозим материалы и делаем монтаж в оговоренные сроки.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <h5>ЗАПУСК</h5>
+                        <p class="small text-muted">Опрессовка системы, запуск и сдача теплого объекта.</p>
+                    </div>
+                </div>
             </div>
-            <p class="text-center mt-3 text-muted">Выезд по Улан-Удэ и в пригород до 100 км</p>
+        </div>
+    </section>
+
+    <section class="section-padding faq-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="title-block"><h2>ВОПРОС / <span>ОТВЕТ</span></h2></div>
+                    <div class="accordion" id="faqAcc">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#f1">Сколько времени занимает монтаж?</button></h2>
+                            <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc">
+                                <div class="accordion-body">В среднем монтаж отопления в частном доме 100 кв.м занимает от 4 до 7 рабочих дней.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f2">Помогаете ли вы с закупкой материалов?</button></h2>
+                            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                                <div class="accordion-body">Да, я полностью беру на себя комплектацию объекта. Мои скидки в магазинах города позволяют вам существенно сэкономить.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f3">Вы работаете в районах?</button></h2>
+                            <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                                <div class="accordion-body">Работаю по Улан-Удэ и в районах Бурятии (до 150 км от города).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding pb-0">
+        <div class="container">
+            <div class="title-block"><h2>Я НА <span>СВЯЗИ</span></h2></div>
+            <div class="map-box" data-aos="zoom-in">
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=107.584838%2C51.833507&z=12&l=map" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <h2>ОСТАЛИСЬ ВОПРОСЫ?</h2>
+            <p class="text-primary fw-bold letter-spacing-2">ЕСТЬ ПРОЕКТ? ЗВОНИТЕ!</p>
             <a href="tel:+79833332496" class="footer-phone">8 (983) 333-24-96</a>
-            <p class="opacity-50">Саша Грей — Тепло в каждый дом</p>
+            <div class="d-flex justify-content-center gap-4 mt-5">
+                <a href="https://t.me/79833332496" class="text-white fs-1"><i class="fab fa-telegram"></i></a>
+                <a href="tel:+79833332496" class="text-primary fs-1"><i class="fas fa-phone-square"></i></a>
+            </div>
+            <p class="mt-5 opacity-50 small">© 2026 САША ГРЕЙ — ИНЖЕНЕРНЫЕ СИСТЕМЫ. УЛАН-УДЭ</p>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+    </script>
 </body>
 </html>
