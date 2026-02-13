@@ -163,11 +163,22 @@
             height: 600px; width: 100%;
             filter: grayscale(100%) invert(92%) contrast(85%); /* Стильная темная карта */
         }
-
-        /* Адаптив */
+/* Адаптив для мобильных устройств */
         @media (max-width: 768px) {
-            .hero-card { padding: 30px 20px; background: rgba(10,10,10,0.9); }
-            .hero h1 { font-size: 2.2rem; }
+            .hero {
+                /* Делаем затемнение фона на телефоне намного слабее */
+                background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%), 
+                            url('hero-bg.jpg') !important;
+                background-position: center center;
+            }
+            .hero-card { 
+                padding: 25px 15px; 
+                /* Убираем фон почти в ноль (0.05) и уменьшаем размытие до минимума */
+                background: rgba(10,10,10, 0.05) !important; 
+                backdrop-filter: blur(5px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .hero h1 { font-size: 2.0rem; }
             .contact-box { padding: 30px; margin-bottom: 0; }
             .map-container { height: 400px; }
         }
@@ -468,6 +479,7 @@
     </script>
 </body>
 </html>
+
 
 
 
