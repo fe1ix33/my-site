@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Монтаж отопления, водоснабжения и котельных в Улан-Удэ. Инженер Саша Грей. Гарантия, договор, скидки на материалы.">
-    <meta name="keywords" content="отопление Улан-Удэ, сантехник, теплый пол, котельная, Саша Грей">
-    <title>Саша Грей — Инженерные системы PRO</title>
+    <meta name="description" content="Инженерные системы в Улан-Удэ. Отопление, водоснабжение, котельные под ключ. Саша Грей.">
+    <title>Саша Грей — Инженерные системы (High Contrast)</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,152 +13,162 @@
 
     <style>
         :root {
-            --primary: #f37021; /* Фирменный оранжевый */
-            --primary-hover: #ff8c42;
-            --dark: #111111;
-            --card-bg: #1a1a1a;
-            --text-light: #f1f1f1;
-            --text-muted: #a0a0a0;
-            --tg-color: #229ED9;
+            /* Обновленный, более яркий оранжевый для контраста */
+            --primary: #ff6b00; 
+            --primary-glow: rgba(255, 107, 0, 0.4);
+            --dark: #050505; /* Почти черный */
+            --card-bg: #121212;
+            --text-light: #ffffff;
+            --text-gray: #b3b3b3;
         }
 
-        /* --- ГЛОБАЛЬНЫЕ СТИЛИ --- */
+        /* --- БАЗОВЫЕ НАСТРОЙКИ --- */
         body {
             font-family: 'Manrope', sans-serif;
             background-color: var(--dark);
             color: var(--text-light);
-            overflow-x: hidden;
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5 { font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
-        .text-orange { color: var(--primary) !important; }
-        .bg-orange { background-color: var(--primary) !important; }
+        h1, h2, h3, h4 { font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; color: white; }
+        .text-orange { color: var(--primary) !important; text-shadow: 0 0 20px rgba(255, 107, 0, 0.3); }
         
-        /* Плавная прокрутка */
-        html { scroll-behavior: smooth; }
-
-        /* --- НАВИГАЦИЯ (Стекло) --- */
-        .navbar {
-            background: rgba(17, 17, 17, 0.85);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px 0;
-            transition: 0.3s;
-        }
-        .navbar-brand img { height: 45px; filter: invert(1); margin-right: 10px; }
-        .navbar-brand span { color: var(--primary); font-weight: 800; }
-        .nav-link { color: var(--text-light) !important; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; margin: 0 10px; transition: 0.3s; }
-        .nav-link:hover { color: var(--primary) !important; }
-        
-        /* Кнопка Telegram в меню */
-        .btn-tg-nav {
-            background: rgba(34, 158, 217, 0.15);
-            color: #229ED9;
-            border: 1px solid #229ED9;
-            border-radius: 50px;
-            padding: 8px 25px;
-            font-weight: 700;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-        .btn-tg-nav:hover { background: #229ED9; color: white; box-shadow: 0 0 20px rgba(34, 158, 217, 0.5); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            min-height: 800px;
-            background: linear-gradient(180deg, rgba(17,17,17,0.7) 0%, var(--dark) 100%),
-                        url('https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=2000');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Параллакс */
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        .hero-content { position: relative; z-index: 2; }
-        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); line-height: 1.1; margin-bottom: 20px; }
-        .typing-text { color: var(--primary); border-right: 3px solid var(--primary); padding-right: 5px; animation: blink 0.7s infinite; }
-        
-        .btn-hero {
+        /* Кнопки с эффектом свечения */
+        .btn-glow {
             background: var(--primary);
             color: white;
-            padding: 20px 50px;
+            padding: 18px 40px;
             border-radius: 50px;
-            font-size: 1.1rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            box-shadow: 0 10px 40px var(--primary-glow);
+            transition: 0.4s;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(243, 112, 33, 0.3);
-            border: 2px solid var(--primary);
         }
-        .btn-hero:hover { background: transparent; color: var(--primary); transform: translateY(-5px); }
+        .btn-glow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px var(--primary-glow);
+            color: white;
+            filter: brightness(1.1);
+        }
 
-        /* --- СТАТИСТИКА --- */
-        .stats-bar { background: var(--card-bg); padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .stat-box h3 { font-size: 3.5rem; color: var(--primary); margin: 0; line-height: 1; }
-        .stat-box p { font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); margin-top: 10px; letter-spacing: 1px; }
+        /* --- НАВИГАЦИЯ --- */
+        .navbar {
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 15px 0;
+        }
+        .navbar-brand { font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .navbar-brand img { height: 40px; filter: invert(1); }
+        .nav-link { color: #ccc !important; font-weight: 600; transition: 0.3s; margin: 0 10px; }
+        .nav-link:hover { color: var(--primary) !important; }
 
-        /* --- УСЛУГИ (Карточки) --- */
-        .section-title { margin-bottom: 70px; text-align: center; }
-        .section-title h2 { font-size: 3rem; }
-        .section-title span { color: var(--primary); }
-        
+        /* --- HERO SECTION (Главный экран) --- */
+        .hero {
+            min-height: 100vh;
+            /* Очень темный градиент поверх картинки для читаемости */
+            background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        /* Подложка под текст (Glass Card) - ГЛАВНОЕ ИСПРАВЛЕНИЕ */
+        .hero-card {
+            background: rgba(20, 20, 20, 0.7); /* Темная полупрозрачная плашка */
+            backdrop-filter: blur(20px); /* Сильное размытие фона за текстом */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая рамка */
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5); /* Глубокая тень */
+        }
+
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 25px; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
+        .hero p { font-size: 1.2rem; color: #d0d0d0; margin-bottom: 40px; }
+
+        /* --- ЦИФРЫ --- */
+        .stats-section { background: #0a0a0a; padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .stat-item h3 { font-size: 3rem; color: var(--primary); margin: 0; }
+        .stat-item p { color: #666; font-size: 0.9rem; text-transform: uppercase; margin-top: 5px; }
+
+        /* --- УСЛУГИ --- */
         .service-card {
-            background: #1f1f1f;
-            padding: 50px 30px;
+            background: var(--card-bg);
+            padding: 40px 30px;
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.4s;
+            transition: 0.3s;
             height: 100%;
         }
-        .service-card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .service-icon { font-size: 3rem; color: var(--primary); margin-bottom: 25px; }
-        .service-price { display: block; margin-top: 20px; font-size: 1.5rem; font-weight: 800; color: white; }
+        .service-card:hover { 
+            background: #1a1a1a; 
+            border-color: var(--primary); 
+            transform: translateY(-10px);
+        }
+        .icon-box {
+            width: 70px; height: 70px;
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--primary);
+            border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; margin-bottom: 25px;
+        }
 
-        /* --- БРЕНДЫ (Новое!) --- */
-        .brands-section { background: white; padding: 60px 0; overflow: hidden; }
-        .brand-item { text-align: center; font-weight: 800; font-size: 2rem; color: #ccc; text-transform: uppercase; transition: 0.3s; }
-        .brand-item:hover { color: var(--primary); transform: scale(1.1); }
+        /* --- ТАБЛИЦА ЦЕН --- */
+        .price-wrapper { background: var(--card-bg); border-radius: 25px; overflow: hidden; padding: 20px; }
+        .price-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: 0.2s;
+        }
+        .price-row:last-child { border-bottom: none; }
+        .price-row:hover { background: rgba(255,255,255,0.03); }
+        .price-cost { color: var(--primary); font-weight: 800; font-size: 1.2rem; }
 
-        /* --- ЭТАПЫ (Timeline) --- */
-        .timeline-step { position: relative; padding-left: 50px; margin-bottom: 40px; }
-        .timeline-step::before { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: rgba(255,255,255,0.1); }
-        .step-num { position: absolute; left: -18px; top: 0; width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; border: 4px solid var(--dark); }
-        
-        /* --- ПРАЙС --- */
-        .price-list { background: #1a1a1a; border-radius: 20px; overflow: hidden; }
-        .price-item { display: flex; justify-content: space-between; padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s; }
-        .price-item:hover { background: rgba(243, 112, 33, 0.05); padding-left: 35px; }
-        .price-val { color: var(--primary); font-weight: 700; font-size: 1.1rem; }
-
-        /* --- ОТЗЫВЫ (Слайдер) --- */
-        .review-card { background: #222; padding: 40px; border-radius: 20px; margin: 10px; position: relative; }
-        .review-card i { color: var(--primary); font-size: 2rem; margin-bottom: 20px; opacity: 0.5; }
+        /* --- ОТЗЫВЫ --- */
+        .review-card {
+            background: #151515;
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 4px solid var(--primary);
+            margin: 10px;
+        }
 
         /* --- КОНТАКТЫ --- */
-        .contact-wrap { background: #1a1a1a; border-radius: 30px; padding: 60px; position: relative; z-index: 5; margin-bottom: -100px; border: 1px solid rgba(255,255,255,0.05); }
-        .contact-link { display: flex; align-items: center; gap: 20px; color: white; text-decoration: none; margin-bottom: 30px; font-size: 1.2rem; transition: 0.3s; }
-        .contact-link i { width: 50px; height: 50px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); transition: 0.3s; }
-        .contact-link:hover i { background: var(--primary); color: white; }
-
-        /* --- ФУТЕР --- */
-        footer { background: #000; padding: 180px 0 50px; border-top: 5px solid var(--primary); }
+        .contact-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 60px;
+            position: relative;
+            z-index: 5;
+            margin-bottom: -150px;
+        }
         
-        /* Анимации */
-        @keyframes blink { 50% { border-color: transparent; } }
+        /* Карта */
+        .map-container {
+            height: 600px; width: 100%;
+            filter: grayscale(100%) invert(92%) contrast(85%); /* Стильная темная карта */
+        }
 
         /* Адаптив */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .stat-box { margin-bottom: 30px; }
-            .contact-wrap { padding: 30px; margin-bottom: 0; }
-            footer { padding-top: 80px; }
+            .hero-card { padding: 30px 20px; background: rgba(10,10,10,0.9); }
+            .hero h1 { font-size: 2.2rem; }
+            .contact-box { padding: 30px; margin-bottom: 0; }
+            .map-container { height: 400px; }
         }
     </style>
 </head>
@@ -169,20 +178,19 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="https://cdn-icons-png.flaticon.com/512/900/900687.png" alt="Logo">
-                <b>САША</b> <span>ГРЕЙ</span>
+                <div>САША <span class="text-orange">ГРЕЙ</span></div>
             </a>
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#price">Цены</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Работы</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Услуги</a></li>
+                    <li class="nav-item"><a href="#prices" class="nav-link">Прайс</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Обо мне</a></li>
                     <li class="nav-item ms-lg-3">
-                        <a href="https://t.me/AlexanderMakhutov0" class="btn-tg-nav">
-                            <i class="fab fa-telegram-plane"></i> Telegram
+                        <a href="https://t.me/AlexanderMakhutov0" class="btn btn-sm btn-outline-light rounded-pill px-4">
+                            <i class="fab fa-telegram me-2"></i>Связаться
                         </a>
                     </li>
                 </ul>
@@ -191,231 +199,205 @@
     </nav>
 
     <section class="hero">
-        <div class="container hero-content">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-8" data-aos="fade-up">
-                    <p class="text-uppercase fw-bold text-orange mb-3" style="letter-spacing: 3px;">Улан-Удэ • Бурятия</p>
-                    <h1>ИНЖЕНЕРНЫЕ СИСТЕМЫ<br><span class="typing-text">ПОД КЛЮЧ</span></h1>
-                    <p class="fs-4 text-muted mb-5">Профессиональный монтаж отопления, водоснабжения и котельных. Экономия бюджета до 15% на материалах.</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="https://t.me/AlexanderMakhutov0" class="btn-hero">
-                            <i class="fab fa-telegram"></i> НАПИСАТЬ МНЕ
-                        </a>
-                        <a href="tel:+79833332496" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold">
-                            <i class="fas fa-phone-alt me-2"></i> ПОЗВОНИТЬ
-                        </a>
+                <div class="col-lg-7">
+                    <div class="hero-card" data-aos="fade-up">
+                        <span class="badge bg-warning text-dark fw-bold mb-3 px-3 py-2">РАБОТАЮ В УЛАН-УДЭ</span>
+                        <h1>ИНЖЕНЕРНЫЕ СИСТЕМЫ <span class="text-orange">ПОД КЛЮЧ</span></h1>
+                        <p>
+                            Монтаж отопления, водоснабжения и котельных любой сложности. 
+                            Никаких "скрытых" платежей. Скидки на материалы до 15% в Смит и Вегос-М.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row gap-3">
+                            <a href="https://t.me/AlexanderMakhutov0" class="btn-glow">
+                                <i class="fab fa-telegram-plane"></i> Написать мне
+                            </a>
+                            <a href="#prices" class="btn btn-outline-light rounded-pill px-4 py-3 fw-bold">
+                                Смотреть цены
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats-bar">
+    <section class="stats-section">
         <div class="container">
-            <div class="row text-center">
-                <div class="col-6 col-md-3 stat-box" data-aos="zoom-in">
-                    <h3>3+</h3>
-                    <p>Года опыта</p>
+            <div class="row text-center g-4">
+                <div class="col-6 col-md-3" data-aos="zoom-in">
+                    <div class="stat-item">
+                        <h3>3+</h3>
+                        <p>Года опыта</p>
+                    </div>
                 </div>
-                <div class="col-6 col-md-3 stat-box" data-aos="zoom-in" data-aos-delay="100">
-                    <h3>100+</h3>
-                    <p>Сданных объектов</p>
+                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-item">
+                        <h3>100+</h3>
+                        <p>Объектов сдано</p>
+                    </div>
                 </div>
-                <div class="col-6 col-md-3 stat-box" data-aos="zoom-in" data-aos-delay="200">
-                    <h3>2</h3>
-                    <p>Года гарантии</p>
+                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-item">
+                        <h3>2 г.</h3>
+                        <p>Гарантия по договору</p>
+                    </div>
                 </div>
-                <div class="col-6 col-md-3 stat-box" data-aos="zoom-in" data-aos-delay="300">
-                    <h3>15%</h3>
-                    <p>Скидка в Смит</p>
+                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-item">
+                        <h3>-15%</h3>
+                        <p>Скидка на материалы</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" style="padding: 100px 0;">
+    <section id="services" class="py-5 mt-5">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>МОИ <span>КОМПЕТЕНЦИИ</span></h2>
-                <p class="text-muted">Решаю инженерные задачи любой сложности</p>
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">МОИ <span class="text-orange">УСЛУГИ</span></h2>
+                <p class="text-gray">Полный цикл работ: от проекта до теплого дома</p>
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="service-card">
-                        <i class="fas fa-fire service-icon"></i>
+                        <div class="icon-box"><i class="fas fa-fire"></i></div>
                         <h4>Котельные</h4>
-                        <p class="text-muted">Проектирование и монтаж котельных на твердом топливе, газе и электричестве. Обвязка медью и нержавейкой.</p>
-                        <span class="service-price">от 15 000 ₽</span>
+                        <p class="text-gray small mt-3">Монтаж твердотопливных, электрических и газовых котлов. Обвязка медью, нержавейкой, полипропиленом.</p>
+                        <hr class="border-secondary opacity-25">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">от 15 000 ₽</span>
+                            <a href="https://t.me/AlexanderMakhutov0" class="text-orange text-decoration-none small">Заказать &rarr;</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
-                        <i class="fas fa-th service-icon"></i>
+                        <div class="icon-box"><i class="fas fa-th-large"></i></div>
                         <h4>Теплый пол</h4>
-                        <p class="text-muted">Монтаж водяного теплого пола. Расчет теплопотерь, укладка матов, опрессовка системы.</p>
-                        <span class="service-price">от 450 ₽/м²</span>
+                        <p class="text-gray small mt-3">Укладка матов теплого пола, монтаж коллекторных групп, опрессовка системы воздухом/водой.</p>
+                        <hr class="border-secondary opacity-25">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">450 ₽/м²</span>
+                            <a href="https://t.me/AlexanderMakhutov0" class="text-orange text-decoration-none small">Заказать &rarr;</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-card">
-                        <i class="fas fa-faucet service-icon"></i>
+                        <div class="icon-box"><i class="fas fa-tint"></i></div>
                         <h4>Водоснабжение</h4>
-                        <p class="text-muted">Разводка труб ХВС/ГВС, установка инсталляций, смесителей, фильтров и насосных станций.</p>
-                        <span class="service-price">от 10 000 ₽</span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-card">
-                        <i class="fas fa-wrench service-icon"></i>
-                        <h4>Радиаторы</h4>
-                        <p class="text-muted">Монтаж алюминиевых и биметаллических радиаторов. Лучевая и тройниковая разводка.</p>
-                        <span class="service-price">от 3 500 ₽/шт</span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-card">
-                        <i class="fas fa-shower service-icon"></i>
-                        <h4>Бойлеры</h4>
-                        <p class="text-muted">Установка бойлеров косвенного нагрева и электрических водонагревателей.</p>
-                        <span class="service-price">от 5 000 ₽</span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-card" style="border-color: var(--primary);">
-                        <i class="fas fa-file-signature service-icon"></i>
-                        <h4>Проект + Смета</h4>
-                        <p class="text-muted">Выезд на замер, консультация, подбор оборудования и составление сметы.</p>
-                        <span class="service-price text-success">БЕСПЛАТНО</span>
+                        <p class="text-gray small mt-3">Разводка труб ХВС/ГВС. Установка глубинных насосов, автоматики, гидроаккумуляторов.</p>
+                        <hr class="border-secondary opacity-25">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">от 10 000 ₽</span>
+                            <a href="https://t.me/AlexanderMakhutov0" class="text-orange text-decoration-none small">Заказать &rarr;</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="brands-section">
-        <div class="container">
-            <p class="text-center text-dark text-uppercase fw-bold mb-4 opacity-50">Работаю с надежным оборудованием</p>
-            <div class="row align-items-center justify-content-center g-5 text-center">
-                <div class="col-6 col-md-3 brand-item">ZOTA</div>
-                <div class="col-6 col-md-3 brand-item">STOUT</div>
-                <div class="col-6 col-md-3 brand-item">PROTHERM</div>
-                <div class="col-6 col-md-3 brand-item">REHAU</div>
-                <div class="col-6 col-md-3 brand-item">VALTEC</div>
-                <div class="col-6 col-md-3 brand-item">GRUNDFOS</div>
-                <div class="col-6 col-md-3 brand-item">BAXI</div>
-            </div>
-        </div>
-    </section>
-
-    <section style="padding: 100px 0; background: #151515;">
+    <section id="about" class="py-5 my-5 bg-darker">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="section-title text-start">
-                        <h2>ПРОЦЕСС <span>РАБОТЫ</span></h2>
-                        <p>Всё прозрачно и по договору</p>
-                    </div>
-                    <div class="timeline-step">
-                        <div class="step-num">1</div>
-                        <h5>Заявка и замер</h5>
-                        <p class="text-muted">Вы звоните или пишете в Telegram. Я приезжаю, делаю замеры и обсуждаем детали.</p>
-                    </div>
-                    <div class="timeline-step">
-                        <div class="step-num">2</div>
-                        <h5>Смета и Договор</h5>
-                        <p class="text-muted">Составляю точную смету материалов и работ. Подписываем договор с гарантией.</p>
-                    </div>
-                    <div class="timeline-step">
-                        <div class="step-num">3</div>
-                        <h5>Закупка и Монтаж</h5>
-                        <p class="text-muted">Закупаю материалы со скидкой. Выполняю монтаж в оговоренные сроки.</p>
-                    </div>
-                    <div class="timeline-step">
-                        <div class="step-num">4</div>
-                        <h5>Запуск системы</h5>
-                        <p class="text-muted">Проводим опрессовку, запускаем отопление, вы принимаете работу и наслаждаетесь теплом.</p>
-                    </div>
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1000" class="img-fluid rounded-4 shadow opacity-75" style="border: 2px solid #333;" alt="Монтаж">
                 </div>
-                <div class="col-lg-6 ps-lg-5" data-aos="zoom-in">
-                    <img src="https://images.unsplash.com/photo-1621905252507-b35a83008023?q=80&w=1000" class="img-fluid rounded-4 shadow-lg border border-secondary" alt="Рабочий процесс">
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                    <h2 class="mb-4">ПОЧЕМУ ВЫБИРАЮТ <span class="text-orange">МЕНЯ</span></h2>
+                    
+                    <div class="d-flex gap-3 mb-4">
+                        <div class="text-orange fs-3"><i class="fas fa-percentage"></i></div>
+                        <div>
+                            <h5 class="mb-1">Экономия бюджета</h5>
+                            <p class="text-gray small">Имею карты профи в магазинах "Смит", "Вегос-М". Ваша скидка составит до 15% от чека.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mb-4">
+                        <div class="text-orange fs-3"><i class="fas fa-file-contract"></i></div>
+                        <div>
+                            <h5 class="mb-1">Официальный договор</h5>
+                            <p class="text-gray small">Фиксируем цену до начала работ. Никаких накруток в процессе. Гарантия 2 года прописана на бумаге.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <div class="text-orange fs-3"><i class="fas fa-tools"></i></div>
+                        <div>
+                            <h5 class="mb-1">Проф. инструмент</h5>
+                            <p class="text-gray small">Использую аккумуляторный инструмент Milwaukee и прессы для труб. Это гарантирует надежность соединений.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="price" style="padding: 100px 0;">
+    <section id="prices" class="py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="section-title">
-                        <h2>СТОИМОСТЬ <span>УСЛУГ</span></h2>
+                    <div class="text-center mb-5">
+                        <h2>ЧЕСТНЫЙ <span class="text-orange">ПРАЙС</span></h2>
+                        <p class="text-gray">Стоимость работ (без учета материалов)</p>
                     </div>
-                    <div class="price-list" data-aos="fade-up">
-                        <div class="price-item"><span>Выезд на замер (Улан-Удэ)</span><span class="text-success fw-bold">0 ₽</span></div>
-                        <div class="price-item"><span>Монтаж настенного котла</span><span class="price-val">от 8 000 ₽</span></div>
-                        <div class="price-item"><span>Монтаж напольного котла</span><span class="price-val">от 12 000 ₽</span></div>
-                        <div class="price-item"><span>Укладка теплого пола (с матами)</span><span class="price-val">450 ₽/м²</span></div>
-                        <div class="price-item"><span>Монтаж коллекторного узла</span><span class="price-val">от 5 000 ₽</span></div>
-                        <div class="price-item"><span>Установка радиатора</span><span class="price-val">3 500 ₽</span></div>
-                        <div class="price-item"><span>Монтаж дымохода (сэндвич)</span><span class="price-val">от 2 000 ₽/м</span></div>
-                        <div class="price-item"><span>Разводка ХВС/ГВС (точка)</span><span class="price-val">от 2 500 ₽</span></div>
+                    <div class="price-wrapper border border-secondary border-opacity-25" data-aos="fade-up">
+                        <div class="price-row">
+                            <span>Выезд на замер в черте города</span>
+                            <span class="text-success fw-bold">БЕСПЛАТНО</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Монтаж настенного котла</span>
+                            <span class="price-cost">от 8 000 ₽</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Монтаж напольного котла</span>
+                            <span class="price-cost">от 12 000 ₽</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Укладка теплого пола</span>
+                            <span class="price-cost">450 ₽/м²</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Монтаж радиатора</span>
+                            <span class="price-cost">3 500 ₽/шт</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Установка бойлера косвенного нагрева</span>
+                            <span class="price-cost">от 7 000 ₽</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Монтаж дымохода (сэндвич)</span>
+                            <span class="price-cost">от 2 500 ₽/м</span>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="https://t.me/AlexanderMakhutov0" class="btn btn-outline-light rounded-pill px-5">Уточнить стоимость</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-dark py-5">
+    <section class="py-5 bg-darker">
         <div class="container">
-            <h2 class="text-center mb-5">ЧТО ГОВОРЯТ <span>КЛИЕНТЫ</span></h2>
-            <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row justify-content-center">
-                            <div class="col-md-8 text-center">
-                                <div class="review-card">
-                                    <i class="fas fa-quote-left"></i>
-                                    <p class="fs-5 fst-italic">"Саша делал нам отопление в доме в Сотниково. Всё четко, материалы закупил сам со скидкой. Зиму пережили отлично, дома жара! Рекомендую."</p>
-                                    <h5 class="mt-3 text-orange">Алексей Д.</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row justify-content-center">
-                            <div class="col-md-8 text-center">
-                                <div class="review-card">
-                                    <i class="fas fa-quote-left"></i>
-                                    <p class="fs-5 fst-italic">"Заказывали теплый пол на первый этаж. Сделали за 3 дня. Аккуратно, мусор за собой убрали. Цена как в договоре, ни копейки лишней не взяли."</p>
-                                    <h5 class="mt-3 text-orange">Марина В.</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-                <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" style="padding: 100px 0; background: #151515;">
-        <div class="container">
-            <div class="section-title"><h2>ВОПРОС / <span>ОТВЕТ</span></h2></div>
+            <div class="text-center mb-5"><h2>FAQ</h2></div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="accordion accordion-flush" id="faqAcc">
-                        <div class="accordion-item bg-transparent border-bottom border-secondary">
-                            <h2 class="accordion-header"><button class="accordion-button collapsed bg-transparent text-light shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#q1">Сколько стоит выезд?</button></h2>
-                            <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body text-muted">В черте города Улан-Удэ выезд на осмотр и составление сметы — бесплатно. В отдаленные районы (Иволгинск, Эрхирик и т.д.) — по договоренности (оплата ГСМ).</div></div>
+                    <div class="accordion accordion-flush" id="faqAccordion">
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed bg-transparent text-light shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#f1">Как происходит оплата?</button></h2>
+                            <div id="f1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-gray">Оплата поэтапная. 50% предоплата за работы, остаток — после сдачи объекта и проверки системы.</div></div>
                         </div>
-                        <div class="accordion-item bg-transparent border-bottom border-secondary">
-                            <h2 class="accordion-header"><button class="accordion-button collapsed bg-transparent text-light shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#q2">Сами закупаете материалы?</button></h2>
-                            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body text-muted">Да, я полностью комплектую объект. У меня есть карты профи (дилерские) в магазинах Смит, Вегос-М, Сантехмаркет. Скидка клиента — до 15%.</div></div>
-                        </div>
-                        <div class="accordion-item bg-transparent border-bottom border-secondary">
-                            <h2 class="accordion-header"><button class="accordion-button collapsed bg-transparent text-light shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#q3">Можно ли оплатить картой?</button></h2>
-                            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body text-muted">Да, возможен наличный расчет или перевод на карту. Работаю как с физлицами, так и с ИП.</div></div>
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed bg-transparent text-light shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#f2">Помогаете с проектом?</button></h2>
+                            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-gray">Да, я делаю расчет теплопотерь и гидравлическую схему, чтобы система работала эффективно и экономно.</div></div>
                         </div>
                     </div>
                 </div>
@@ -423,73 +405,41 @@
         </div>
     </section>
 
-    <section style="position: relative; padding-top: 100px;">
+    <section class="position-relative pt-5 mt-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="contact-wrap" data-aos="fade-up">
-                        <div class="row align-items-center">
-                            <div class="col-md-6">
-                                <h2 class="mb-4">СВЯЖИТЕСЬ СО МНОЙ</h2>
-                                <p class="text-muted mb-5">Готов обсудить ваш проект прямо сейчас. Отвечаю быстро.</p>
-                                
-                                <a href="tel:+79833332496" class="contact-link">
-                                    <i class="fas fa-phone"></i>
-                                    <div>
-                                        <small class="text-muted d-block">Позвонить</small>
-                                        <strong>8 (983) 333-24-96</strong>
-                                    </div>
-                                </a>
-                                
-                                <a href="https://t.me/AlexanderMakhutov0" class="contact-link">
-                                    <i class="fab fa-telegram-plane"></i>
-                                    <div>
-                                        <small class="text-muted d-block">Написать в Telegram</small>
-                                        <strong>@AlexanderMakhutov0</strong>
-                                    </div>
-                                </a>
-                                
-                                <a href="mailto:mahutov@example.com" class="contact-link">
-                                    <i class="fas fa-envelope"></i>
-                                    <div>
-                                        <small class="text-muted d-block">Почта</small>
-                                        <strong>Для коммерческих предложений</strong>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-6 text-center mt-4 mt-md-0">
-                                <div class="p-4 rounded-4" style="background: rgba(255,255,255,0.05);">
-                                    <h4 class="mb-3">Оставьте заявку</h4>
-                                    <p class="small text-muted mb-4">Напишите имя, я перезвоню через 15 минут</p>
-                                    <a href="https://t.me/AlexanderMakhutov0" class="btn btn-primary w-100 py-3 fw-bold rounded-pill">НАПИСАТЬ МНЕ</a>
-                                </div>
-                            </div>
+                    <div class="contact-box text-center" data-aos="zoom-in">
+                        <h2 class="mb-4">ЕСТЬ ВОПРОСЫ?</h2>
+                        <p class="text-gray mb-5 fs-5">Свяжитесь со мной любым удобным способом. Я всегда на связи.</p>
+                        
+                        <div class="d-flex flex-wrap justify-content-center gap-4">
+                            <a href="https://t.me/AlexanderMakhutov0" class="btn-glow">
+                                <i class="fab fa-telegram-plane fa-lg"></i> TELEGRAM
+                            </a>
+                            <a href="tel:+79833332496" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold">
+                                <i class="fas fa-phone-alt me-2"></i> 8 (983) 333-24-96
+                            </a>
                         </div>
+                        <p class="mt-4 text-muted small">Отвечаю в течение 15 минут</p>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <div class="map-container">
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=107.584838%2C51.833507&z=12&l=map&mode=search&text=Улан-Удэ" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
     </section>
 
-    <footer>
-        <div style="height: 400px; width: 100%; position: absolute; top: 0; left: 0; z-index: 1;">
-            <iframe src="https://yandex.ru/map-widget/v1/?ll=107.584838%2C51.833507&z=12&l=map&mode=search&text=Улан-Удэ" width="100%" height="100%" frameborder="0" style="filter: grayscale(1) contrast(1.2) invert(0.9);"></iframe>
-        </div>
-        
-        <div class="container position-relative" style="z-index: 2;">
-            <div class="row pt-5 mt-5">
-                <div class="col-md-4 mb-4">
-                    <h4 class="text-light">САША ГРЕЙ</h4>
-                    <p class="text-muted small">Профессиональные инженерные системы.<br>Улан-Удэ, Республика Бурятия.</p>
-                </div>
-                <div class="col-md-4 mb-4 text-center">
-                    <a href="#" class="text-white text-decoration-none mx-2"><i class="fab fa-vk fa-2x"></i></a>
-                    <a href="https://t.me/AlexanderMakhutov0" class="text-white text-decoration-none mx-2"><i class="fab fa-telegram fa-2x"></i></a>
-                    <a href="https://wa.me/79833332496" class="text-white text-decoration-none mx-2"><i class="fab fa-whatsapp fa-2x"></i></a>
-                </div>
-                <div class="col-md-4 mb-4 text-md-end">
-                    <p class="text-muted small">© 2026 Все права защищены.<br>Разработка: Alexander Makhutov</p>
-                </div>
+    <footer class="bg-black py-4 border-top border-secondary border-opacity-25">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="mb-3 mb-md-0 text-gray small">
+                © 2026 Александр Махутов.<br>Инженерные системы в Бурятии.
+            </div>
+            <div class="d-flex gap-3">
+                <a href="https://t.me/AlexanderMakhutov0" class="text-white opacity-50 hover-opacity-100"><i class="fab fa-telegram fa-2x"></i></a>
+                <a href="#" class="text-white opacity-50 hover-opacity-100"><i class="fab fa-vk fa-2x"></i></a>
             </div>
         </div>
     </footer>
@@ -497,23 +447,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            offset: 50,
-            once: true
-        });
-
-        // Смена фона навигации при скролле
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(17, 17, 17, 0.98)';
-                navbar.style.padding = '10px 0';
-            } else {
-                navbar.style.background = 'rgba(17, 17, 17, 0.85)';
-                navbar.style.padding = '15px 0';
-            }
-        });
+        AOS.init({ duration: 800, once: true });
     </script>
 </body>
 </html>
