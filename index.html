@@ -371,7 +371,190 @@
             </div>
         </div>
     </section>
+<style>
+        .portfolio-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--dark) 0%, #0a0a0a 100%);
+            position: relative;
+        }
 
+        .work-card {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+            cursor: pointer;
+            background: var(--card-bg);
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Контейнер для фото с эффектом зума */
+        .work-img-wrapper {
+            position: relative;
+            height: 380px;
+            overflow: hidden;
+        }
+
+        .work-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s ease;
+        }
+
+        /* Оранжевое свечение при наведении */
+        .work-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .work-card:hover .work-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        /* Информационная вуаль */
+        .work-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(5, 5, 5, 0.9) 0%, rgba(255, 107, 0, 0.2) 100%);
+            opacity: 0;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+        }
+
+        .work-card:hover .work-overlay {
+            opacity: 1;
+        }
+
+        /* Левитирующий бейдж (Летучая графика) */
+        .work-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 107, 0, 0.9);
+            color: #000;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            z-index: 3;
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+            animation: badge-float 3s ease-in-out infinite;
+        }
+
+        @keyframes badge-float {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+
+        .work-info h4 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #fff;
+            transform: translateY(20px);
+            transition: 0.4s;
+        }
+
+        .work-card:hover .work-info h4 {
+            transform: translateY(0);
+        }
+
+        .work-details {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            opacity: 0;
+            transition: 0.5s 0.1s;
+            margin-top: 10px;
+        }
+
+        .work-card:hover .work-details {
+            opacity: 1;
+        }
+
+        /* Декоративная летающая иконка */
+        .floating-tool {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: rgba(255,255,255,0.3);
+            font-size: 1.5rem;
+            animation: tool-spin 6s linear infinite;
+        }
+        @keyframes tool-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h2 class="display-5 fw-bold">ПРИМЕРЫ <span class="text-orange">РАБОТ</span></h2>
+                <p class="text-gray">Фотографии с реальных объектов в Улан-Удэ</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="work-card">
+                        <div class="work-badge">Объект сдан</div>
+                        <i class="fas fa-cog floating-tool"></i>
+                        <div class="work-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=600" alt="Котельная">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h4>Котельная «Под ключ»</h4>
+                                    <p class="work-details">Монтаж твердотопливного котла и разводка по дому 120 м². Срок реализации: 4 дня.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="work-card">
+                        <div class="work-badge">Завершен</div>
+                        <i class="fas fa-tint floating-tool" style="animation-delay: -2s;"></i>
+                        <div class="work-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600" alt="Теплый пол">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h4>Теплый водяной пол</h4>
+                                    <p class="work-details">Укладка 80 м² теплого пола в частном доме. Использовали трубу из сшитого полиэтилена.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="work-card">
+                        <div class="work-badge">В эксплуатации</div>
+                        <i class="fas fa-wrench floating-tool" style="animation-delay: -4s;"></i>
+                        <div class="work-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?q=80&w=600" alt="Водоснабжение">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h4>Водоснабжение</h4>
+                                    <p class="work-details">Бурение скважины и полная разводка воды. Установлена автоматика и фильтры.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                 <p class="text-gray small">Больше фото работ пришлю в Telegram по запросу</p>
+            </div>
+        </div>
+    </section>
+    ```
     <section id="reviews" class="py-5 my-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -560,3 +743,4 @@
     </script>
 </body>
 </html>
+
