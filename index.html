@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Александр Махутов — Инженерные системы в Улан-Удэ</title>
+    <title>Инженерные системы в Улан-Удэ — Монтаж отопления и водоснабжения</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,29 +18,31 @@
             --card-bg: #121212;
             --text-light: #ffffff;
             --text-gray: #b3b3b3;
+            --whatsapp: #25D366;
         }
 
         body {
             font-family: 'Manrope', sans-serif;
             background-color: var(--dark);
             color: var(--text-light);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 { font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; color: white; }
+        h1, h2, h3, h4, h5 { font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; color: white; }
         .text-orange { color: var(--primary) !important; text-shadow: 0 0 20px rgba(255, 107, 0, 0.3); }
         
+        /* КНОПКА ГЛОУ */
         .btn-glow {
             background: var(--primary);
             color: white;
-            padding: 18px 40px;
+            padding: 16px 35px;
             border-radius: 50px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             border: none;
-            box-shadow: 0 10px 40px var(--primary-glow);
+            box-shadow: 0 10px 30px var(--primary-glow);
             transition: 0.4s;
             text-decoration: none;
             display: inline-flex;
@@ -49,183 +51,170 @@
             gap: 10px;
         }
         .btn-glow:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px var(--primary-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px var(--primary-glow);
             color: white;
         }
 
-        /* ПЛАВАЮЩИЕ КНОПКИ */
+        /* МОБИЛЬНЫЕ КНОПКИ СВЯЗИ */
         .floating-controls {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 10px;
             z-index: 9999;
         }
         .btn-float {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-decoration: none;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             transition: 0.3s;
+            font-size: 20px;
         }
-        .btn-tg-float { background: #229ED9; font-size: 24px; }
-        .btn-tg-float:hover { background: #1a88bd; color: white; transform: scale(1.1); }
+        .btn-tg-float { background: #229ED9; }
+        .btn-wa-float { background: var(--whatsapp); }
 
-        /* ШАПКА */
+        /* НАВИГАЦИЯ */
         .navbar {
-            background: rgba(5, 5, 5, 0.9);
+            background: rgba(5, 5, 5, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 15px 0;
+            padding: 12px 0;
         }
 
-        /* ГЛАВНЫЙ ЭКРАН */
+        /* ХЕРО СЕКЦИЯ */
         .hero {
             min-height: 100vh;
             background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.95) 100%), 
                         url('https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=1600');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             display: flex;
             align-items: center;
-            padding-top: 120px;
-            padding-bottom: 60px;
+            padding-top: 100px;
+            padding-bottom: 50px;
         }
 
         .hero-img-wrapper {
             border: 2px solid rgba(255, 107, 0, 0.3);
-            border-radius: 30px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 15px 50px rgba(255, 107, 0, 0.15);
-            max-width: 450px;
+            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.15);
+            max-width: 380px;
             margin: 0 auto;
         }
-        
-        .hero-img-wrapper img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
+        .hero-img-wrapper img { width: 100%; height: auto; object-fit: cover; }
 
-        /* РАЗДЕЛ РАБОТ С ФОНОМ */
+        /* ПОРТФОЛИО */
         .portfolio-section {
-            padding: 120px 0;
-            background: linear-gradient(180deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.85) 50%, rgba(5,5,5,0.95) 100%), 
-                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600');
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
+            padding: 80px 0;
+            background: rgba(5, 5, 5, 0.98);
         }
 
         .work-card {
-            background: rgba(20, 20, 20, 0.9);
-            border-radius: 30px;
+            background: #111111;
+            border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(255, 107, 0, 0.2);
-            backdrop-filter: blur(15px);
-            transition: 0.5s;
+            border: 1px solid rgba(255, 107, 0, 0.15);
             height: 100%;
             display: flex;
             flex-direction: column;
         }
-        .work-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 50px rgba(255, 107, 0, 0.2);
-        }
 
         .work-img-wrapper {
-            height: 450px;
-            background-color: #000000; 
-            overflow: hidden;
-            position: relative;
+            height: 380px;
+            background-color: #000; 
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
         .work-img-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: contain; 
-            transition: transform 0.6s ease;
+            object-fit: cover; 
         }
-        
-        .work-card:hover .work-img-wrapper img { 
-            transform: scale(1.05); 
-        }
+        .work-content { padding: 24px; flex-grow: 1; }
 
-        .work-content { padding: 30px; flex-grow: 1; }
-
-        /* СЕТКА ПРОЦЕССА РАБОТ */
+        /* ЧЕРНОВЫЕ РАБОТЫ (СЕТКА) */
         .process-img-wrapper {
-            height: 300px;
-            border-radius: 20px;
+            height: 220px;
+            border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
             background: #000;
         }
-        .process-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.4s;
-        }
-        .process-img-wrapper:hover img {
-            transform: scale(1.05);
-        }
+        .process-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* УСЛУГИ */
         .service-card {
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 25px;
+            padding: 30px 20px;
+            border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
+            height: 100%;
         }
-        .service-card:hover { background: #1a1a1a; border-color: var(--primary); }
 
-        /* ПРАЙС */
         .price-row {
-            display: flex; justify-content: space-between;
-            padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex; justify-content: space-between; gap: 10px;
+            padding: 16px 10px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
         }
-        .price-row:last-child { border-bottom: none; }
 
-        .map-container { height: 500px; width: 100%; filter: grayscale(1) invert(0.9); border-radius: 30px; overflow: hidden; }
+        .map-container { height: 350px; width: 100%; filter: grayscale(1) invert(0.9); border-radius: 24px; overflow: hidden; }
 
-        @media (max-width: 992px) {
-            .hero { text-align: center; }
-            .hero-img-wrapper { margin-top: 40px; }
-            .d-flex { justify-content: center; }
+        /* КАРУСЕЛЬНЫЕ СТРЕЛКИ И ИНДИКАТОРЫ */
+        .carousel-indicators [data-bs-target] {
+            width: 8px; height: 8px; border-radius: 50%; background-color: var(--primary);
         }
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .work-img-wrapper { height: 350px; }
+        .carousel-control-prev, .carousel-control-next { width: 5%; }
+
+        /* АДАПТИВ ДЛЯ МОБИЛЬНЫХ (ЭКРАНЫ МЕНЕЕ 768px) */
+        @media (max-width: 767.98px) {
+            .navbar-brand { font-size: 1.1rem; }
+            .navbar tel { font-size: 0.9rem; }
+            
+            .hero { text-align: center; padding-top: 90px; min-height: auto; }
+            h1 { font-size: 2rem !important; line-height: 1.3; }
+            .hero .lead { font-size: 1rem; margin-bottom: 30px !important; }
+            .hero-img-wrapper { max-width: 280px; margin-top: 30px; }
+            
+            section { padding: 50px 0 !important; }
+            h2 { font-size: 1.6rem !important; mb-4 !important; }
+
+            /* Делаем сетку процессов компактной (по 2 в ряд) */
+            .process-col { width: 50% !important; }
+            .process-img-wrapper { height: 140px; }
+            .process-card-title { font-size: 0.85rem; font-weight: 700; margin-top: 5px; }
+            .process-card-desc { display: none; } /* прячем длинное описание на мобилках */
+
+            .work-img-wrapper { height: 280px; }
+            .work-content h4 { font-size: 1.1rem; }
+            .work-content p { font-size: 0.9rem; line-height: 1.5; }
+            
+            .price-row { font-size: 0.85rem; flex-direction: column; text-align: center; gap: 4px; }
+            .floating-controls { bottom: 15px; right: 15px; }
+            .btn-float { width: 46px; height: 46px; font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
     <div class="floating-controls">
+        <a href="https://wa.me/79833332496" class="btn-float btn-wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
         <a href="https://t.me/AlexanderMakhutov0" class="btn-float btn-tg-float" target="_blank"><i class="fab fa-telegram-plane"></i></a>
     </div>
 
     <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand text-white fw-bold" href="#">АЛЕКСАНДР <span class="text-orange">МАХУТОВ</span></a>
-            <div class="ms-auto d-none d-lg-block">
-                <a href="tel:+79833332496" class="text-white text-decoration-none fw-bold"><i class="fas fa-phone-alt me-2 text-orange"></i>+7 (983) 333-24-96</a>
-            </div>
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand text-white fw-bold m-0" href="#">МАХУТОВ <span class="text-orange">& КОМАНДА</span></a>
+            <a href="tel:+79833332496" class="text-white text-decoration-none fw-bold small"><i class="fas fa-phone-alt me-1 text-orange"></i>+7(983)333-24-96</a>
         </div>
     </nav>
 
@@ -233,17 +222,16 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7" data-aos="fade-right">
-                    <span class="badge bg-warning text-dark fw-bold mb-3 px-3 py-2">УЛАН-УДЭ И ПРИГОРОД</span>
-                    <h1 class="display-4 fw-bold mb-4">ИНЖЕНЕРНЫЕ СИСТЕМЫ <br><span class="text-orange">ПОД КЛЮЧ</span></h1>
-                    <p class="lead text-gray mb-5">Профессиональный монтаж отопления, водоснабжения и котельного оборудования. Скидки на материалы до 15%. Честная гарантия 2 года по договору.</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="https://t.me/AlexanderMakhutov0" target="_blank" class="btn-glow">Написать в Telegram</a>
-                        <a href="#portfolio" class="btn btn-outline-light rounded-pill px-5" style="display: flex; align-items: center;">Наши работы</a>
+                    <span class="badge bg-warning text-dark fw-bold mb-3 px-3 py-2" style="font-size:0.8rem">УЛАН-УДЭ И БУРЯТИЯ</span>
+                    <h1 class="display-5 fw-bold mb-3">ИНЖЕНЕРНЫЕ СИСТЕМЫ <br><span class="text-orange">ОТ ПРОФЕССИОНАЛОВ</span></h1>
+                    <p class="lead text-gray mb-4">Монтаж отопления, водоснабжения и котельных под ключ. Материалы со скидкой до 15%. Договор и гарантия 2 года.</p>
+                    <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
+                        <a href="https://wa.me/79833332496" target="_blank" class="btn-glow"><i class="fab fa-whatsapp me-2"></i>Рассчитать объект</a>
                     </div>
                 </div>
                 <div class="col-lg-5" data-aos="fade-left">
                     <div class="hero-img-wrapper">
-                        <img src="photo_2026-06-25_20-24-10.jpg" alt="Александр Махутов — Инженер">
+                        <img src="photo_2026-06-25_20-24-10.jpg" alt="Инженер">
                     </div>
                 </div>
             </div>
@@ -251,87 +239,28 @@
     </section>
 
     <section id="services" class="py-5">
-        <div class="container py-5 text-center">
-            <h2 class="mb-5">ЧТО МЫ <span class="text-orange">ДЕЛАЕМ</span></h2>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="service-card text-center h-100">
-                        <i class="fas fa-fire-alt fa-3x text-orange mb-4"></i>
-                        <h4>Отопление</h4>
-                        <p class="text-gray">Монтаж котлов всех типов, радиаторов, конвекторов и разводка магистралей.</p>
+        <div class="container text-center">
+            <h2 class="mb-4">НАШИ <span class="text-orange">УСЛУГИ</span></h2>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fas fa-fire-alt fa-2x text-orange mb-3"></i>
+                        <h5>Отопление</h5>
+                        <p class="text-gray small m-0">Установка котлов, радиаторов, разводка труб. Твердотопливные и электросистемы.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="service-card h-100">
-                        <i class="fas fa-water fa-3x text-orange mb-4"></i>
-                        <h4>Теплый пол</h4>
-                        <p class="text-gray">Профессиональный расчет шага укладки водяного теплого пола и монтаж смесительных узлов.</p>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fas fa-water fa-2x text-orange mb-3"></i>
+                        <h5>Теплый пол</h5>
+                        <p class="text-gray small m-0">Монтаж контуров из сшитого полиэтилена, насосных групп, расчет теплопотерь.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="service-card h-100">
-                        <i class="fas fa-faucet fa-3x text-orange mb-4"></i>
-                        <h4>Водопровод</h4>
-                        <p class="text-gray">Разводка труб ХВС/ГВС, сборка коллекторных узлов любой сложности, установка систем фильтрации.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="portfolio-section">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-down">
-                <h2 class="display-5 fw-bold">ПРИМЕРЫ <span class="text-orange">ГОТОВЫХ УЗЛОВ</span></h2>
-                <p class="text-white opacity-75">Качественная обвязка, точная геометрия систем и аккуратность в деталях</p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-lg-6" data-aos="fade-up">
-                    <div class="work-card">
-                        <div class="work-img-wrapper">
-                            <img src="photo_2026-06-25_20-24-12.jpg" alt="Распределительный узел и бойлер">
-                        </div>
-                        <div class="work-content">
-                            <h4 class="text-orange">Компактный узел ГВС с водонагревателем</h4>
-                            <p class="text-gray">Сборка распределительного коллекторного узла с интеграцией бойлера Thermex. Установлены компенсирующие петли, аккуратная изоляция трасс, манометры для контроля давления на вводах.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="work-card">
-                        <div class="work-img-wrapper">
-                            <img src="photo_2026-06-25_20-24-07.jpg" alt="Электрокотел ZOTA Balance и коллектор">
-                        </div>
-                        <div class="work-content">
-                            <h4 class="text-orange">Котельная на базе котла ZOTA Balance</h4>
-                            <p class="text-gray">Обвязка настенного электрического котла ZOTA и насосно-смесительного узла для радиаторного отопления и контуров теплого пола. Установлен расширительный бак и группа безопасности.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="work-card">
-                        <div class="work-img-wrapper">
-                            <img src="photo_2026-06-25_20-24-05.jpg" alt="Обвязка котельной в цоколе">
-                        </div>
-                        <div class="work-content">
-                            <h4 class="text-orange">Монтаж системы отопления в загородном доме</h4>
-                            <p class="text-gray">Размещение отопительного оборудования в цокольном этаже. Прокладка транзитных магистралей в защитной гофре по потолку, установка коллекторного шкафа на теплый пол.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="work-card">
-                        <div class="work-img-wrapper">
-                            <img src="photo_2026-06-25_20-24-00.jpg" alt="Настенный узел ZOTA LUX">
-                        </div>
-                        <div class="work-content">
-                            <h4 class="text-orange">Премиальный узел ZOTA LUX-X</h4>
-                            <p class="text-gray">Монтаж электрокотла серии LUX на блочную стену. Идеально ровная прокладка полипропиленовых труб в энергофлексе, надежное крепление расширительного бака к стене.</p>
-                        </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fas fa-faucet fa-2x text-orange mb-3"></i>
+                        <h5>Водопровод</h5>
+                        <p class="text-gray small m-0">Разводка ХВС/ГВС, коллекторные узлы, подключение скважин и автоматики.</p>
                     </div>
                 </div>
             </div>
@@ -339,144 +268,221 @@
     </section>
 
     <section class="py-5" style="background-color: #0b0b0b;">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-down">
-                <h2 class="fw-bold">ЭТАПЫ МОНТАЖА И <span class="text-orange">ТРАССИРОВКА ПОЛОВ</span></h2>
-                <p class="text-gray">Показываем скрытые работы: от штробления до укладки труб перед стяжкой</p>
+        <div class="container text-center py-2">
+            <h2 class="mb-3">РАБОТАЕМ <span class="text-orange">БЕЗ ПОСРЕДНИКОВ</span></h2>
+            <p class="text-gray small max-width-700 mx-auto m-0">Мы работаем в паре, сами проектируем и собираем системы. Составляем прозрачные сметы с точными артикулами материалов. Никаких накруток и наемных шабашников — за качество отвечаем лично.</p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2>НАШИ <span class="text-orange">МАСТЕР-УЗЛЫ</span></h2>
+                <p class="text-gray small">Листайте примеры чистовой сборки котельных и узлов ГВС</p>
+            </div>
+
+            <div class="row g-4 d-none d-md-flex">
+                <div class="col-md-6">
+                    <div class="work-card">
+                        <div class="work-img-wrapper"><img src="photo_2026-06-25_20-24-12.jpg" alt="Узел ГВС"></div>
+                        <div class="work-content">
+                            <h4 class="text-orange">Узел ГВС с бойлером</h4>
+                            <p class="text-gray small m-0">Сборка коллекторной группы водоснабжения. Интегрирована фильтрация и система защиты от перепадов давления.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="work-card">
+                        <div class="work-img-wrapper"><img src="photo_2026-06-25_20-24-07.jpg" alt="Котельная"></div>
+                        <div class="work-content">
+                            <h4 class="text-orange">Автоматизированная котельная</h4>
+                            <p class="text-gray small m-0">Обвязка электрокотла ZOTA Balance, группы безопасности и расширительного бака системы отопления.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="work-card">
+                        <div class="work-img-wrapper"><img src="photo_2026-06-25_20-24-05.jpg" alt="Шкаф"></div>
+                        <div class="work-content">
+                            <h4 class="text-orange">Магистральная разводка</h4>
+                            <p class="text-gray small m-0">Монтаж распределительного шкафа в цоколе. Трубы защищены энергофлексом от теплопотерь.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="work-card">
+                        <div class="work-img-wrapper"><img src="photo_2026-06-25_20-24-00.jpg" alt="ZOTA LUX"></div>
+                        <div class="work-content">
+                            <h4 class="text-orange">Обвязка премиум котла ZOTA LUX</h4>
+                            <p class="text-gray small m-0">Симметричная пайка, надежная фиксация к стене и легкий доступ для последующего сервиса.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="portfolioCarousel" class="carousel slide d-md-none" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="work-card">
+                            <div class="work-img-wrapper"><img src="photo_2026-06-25_20-24-12.jpg" alt="Узел ГВС"></div>
+                            <div class="work-content">
+                                <h4 class="text-orange">Узел ГВС с бойлером</h4>
+                                <p class="text-gray small">Сборка коллекторной группы водоснабжения. Фильтрация и защита от перепадов давления.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="work-card">
+                            <div class="work-img-wrapper"><img src="photo_2026-06-25_20-24-07.jpg" alt="Котельная"></div>
+                            <div class="work-content">
+                                <h4 class="text-orange">Автоматизированная котельная</h4>
+                                <p class="text-gray small">Обвязка электрокотла ZOTA Balance, группы безопасности и насосных узлов.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="work-card">
+                            <div class="work-img-wrapper"><img src="photo_2026-06-25_20-24-05.jpg" alt="Шкаф"></div>
+                            <div class="work-content">
+                                <h4 class="text-orange">Магистральная разводка</h4>
+                                <p class="text-gray small">Монтаж распределительного шкафа. Трубы надежно защищены энергофлексом.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="work-card">
+                            <div class="work-img-wrapper"><img src="photo_2026-06-25_20-24-00.jpg" alt="ZOTA LUX"></div>
+                            <div class="work-content">
+                                <h4 class="text-orange">Обвязка котла ZOTA LUX</h4>
+                                <p class="text-gray small">Чистовой монтаж, симметричная пайка труб и легкий доступ для обслуживания.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-5" style="background-color: #0b0b0b;">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2>ПРОЦЕСС И ТРАССИРОВКА</h2>
+                <p class="text-gray small">Скрытый монтаж и внимание к деталям</p>
             </div>
             
-            <div class="row g-4">
-                <div class="col-md-4 col-sm-6" data-aos="zoom-in">
-                    <div class="process-img-wrapper mb-3">
-                        <img src="photo_2026-06-25_20-24-09.jpg" alt="Штробление и подводка к радиатору">
-                    </div>
-                    <h6>Подключение радиатора из пола</h6>
-                    <p class="small text-gray">Аккуратная штроба в бетонном основании для скрытой подводки труб к нижнему узлу подключения радиатора.</p>
+            <div class="row g-3">
+                <div class="col-6 col-md-4 process-col">
+                    <div class="process-img-wrapper"><img src="photo_2026-06-25_20-24-09.jpg" alt="Штробление"></div>
+                    <h6 class="process-card-title">Подвод к радиаторам</h6>
+                    <p class="small text-gray process-card-desc">Штробление стен под нижнее скрытое подключение.</p>
                 </div>
-
-                <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="process-img-wrapper mb-3">
-                        <img src="photo_2026-06-25_20-24-02.jpg" alt="Трассировка магистралей">
-                    </div>
-                    <h6>Лучевая разводка отопления</h6>
-                    <p class="small text-gray">Укладка труб отопления по дуге в защитном кожухе. Фиксация к полу перед заливкой чистовой стяжки.</p>
+                <div class="col-6 col-md-4 process-col">
+                    <div class="process-img-wrapper"><img src="photo_2026-06-25_20-24-02.jpg" alt="Укладка"></div>
+                    <h6 class="process-card-title">Лучевая разводка</h6>
+                    <p class="small text-gray process-card-desc">Трассировка петель теплого пола строго по осям.</p>
                 </div>
-
-                <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="process-img-wrapper mb-3">
-                        <img src="photo_2026-06-25_20-24-01.jpg" alt="Вертикальные дизайн-радиаторы">
-                    </div>
-                    <h6>Монтаж высоких дизайн-радиаторов</h6>
-                    <p class="small text-gray">Установка вертикальных трубчатых радиаторов строго по строительному уровню у панорамного остекления.</p>
+                <div class="col-6 col-md-4 process-col">
+                    <div class="process-img-wrapper"><img src="photo_2026-06-25_20-24-01.jpg" alt="Радиаторы"></div>
+                    <h6 class="process-card-title">Дизайн-радиаторы</h6>
+                    <p class="small text-gray process-card-desc">Монтаж высоких вертикальных приборов отопления.</p>
                 </div>
-
-                <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="process-img-wrapper mb-3">
-                        <img src="photo_2026-06-25_20-23-58.jpg" alt="Магистрали в коридоре">
-                    </div>
-                    <h6>Разводка систем в коридорах</h6>
-                    <p class="small text-gray">Основной пучок магистралей теплого пола и водоснабжения, распределяющийся по жилым помещениям.</p>
+                <div class="col-6 col-md-4 process-col">
+                    <div class="process-img-wrapper"><img src="photo_2026-06-25_20-23-58.jpg" alt="Трассы"></div>
+                    <h6 class="process-card-title">Транзитные трассы</h6>
+                    <p class="small text-gray process-card-desc">Укладка коммуникаций в защитной гофре перед стяжкой.</p>
                 </div>
-
-                <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="process-img-wrapper mb-3">
-                        <img src="photo_2026-06-25_20-23-56.jpg" alt="Сложный коллекторный шкаф">
-                    </div>
-                    <h6>Скрытый коллектор в нише</h6>
-                    <p class="small text-gray">Разводка водоснабжения и водоотведения рядом со стояком канализации. Установлены счетчики и краны защиты.</p>
+                <div class="col-6 col-md-4 process-col">
+                    <div class="process-img-wrapper"><img src="photo_2026-06-25_20-23-56.jpg" alt="Ниша"></div>
+                    <h6 class="process-card-title">Узлы ввода в нишах</h6>
+                    <p class="small text-gray process-card-desc">Компактное и эргономичное размещение коллекторов.</p>
                 </div>
-
-                <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="service-card d-flex flex-column justify-content-center align-items-center text-center h-100" style="border: 2px dashed rgba(255,107,0,0.3); background: transparent;">
-                        <i class="fas fa-tools fa-2x text-orange mb-3"></i>
-                        <h5>Ваш объект может быть следующим</h5>
-                        <p class="small text-gray px-3">Разработаем индивидуальную схему разводки под ваш бюджет за 1 день.</p>
+                <div class="col-6 col-md-4 process-col">
+                    <div class="service-card d-flex flex-column justify-content-center align-items-center text-center p-2" style="border: 2px dashed rgba(255,107,0,0.3); background: transparent;">
+                        <i class="fas fa-calculator text-orange mb-1"></i>
+                        <span style="font-size:0.85rem; font-weight:700;">Нужен расчет?</span>
+                        <a href="https://wa.me/79833332496" class="text-white small decoration-none text-orange">Написать →</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="text-center mt-5">
-                <a href="https://t.me/golova_UU" target="_blank" class="btn rounded-pill px-5 py-3 fw-bold" style="border: 2px solid var(--primary); color: var(--primary); transition: 0.3s; text-decoration: none;" onmouseover="this.style.background='var(--primary)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--primary)';">
-                    <i class="fab fa-telegram-plane me-2"></i>СМОТРЕТЬ БОЛЬШЕ РАБОТ В @GOLOVA_UU
-                </a>
             </div>
         </div>
     </section>
 
-    <section id="reviews" class="py-5" style="background-color: #0a0a0a;">
-        <div class="container py-5">
-            <h2 class="text-center mb-5" data-aos="fade-down">ОТЗЫВЫ <span class="text-orange">КЛИЕНТОВ</span></h2>
-            
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="service-card h-100">
-                        <div class="mb-3" style="color: var(--primary);">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+    <section id="reviews" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">ОТЗЫВЫ</h2>
+            <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="service-card text-center">
+                            <div class="mb-2 text-orange"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <h5>Татьяна</h5>
+                            <p class="text-gray small">"Потрясена профессионализмом и скоростью работы! Объём оценили мгновенно, сделали всё быстро и отлично."</p>
                         </div>
-                        <h5 class="text-white">Татьяна</h5>
-                        <p class="text-gray mt-3">"Сегодня обратилась к Александру по поводу регулировки системы отопления. Оценил объём работы мгновенно, сразу взялся за исполнение и сделал всё быстро и отлично!!! Потрясена его профессионализмом, корректностью и скоростью работы! Впредь буду обращаться только к нему. Огромное спасибо Александру!"</p>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="service-card text-center">
+                            <div class="mb-2 text-orange"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <h5>Ирина</h5>
+                            <p class="text-gray small">"Справились со своей работой блестяще. Сами привезли всё необходимое, не пришлось тратить время. Профессионалы!"</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="service-card text-center">
+                            <div class="mb-2 text-orange"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <h5>Данила</h5>
+                            <p class="text-gray small">"Составляют точную смету с артикулами, заключают договор и дают реальную гарантию. Цена в процессе не меняется."</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card h-100">
-                        <div class="mb-3" style="color: var(--primary);">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <h5 class="text-white">Ирина</h5>
-                        <p class="text-gray mt-3">"Александр справился со своей работой блестяще. Сам приобрел, и привез все необходимое для выполнения сантехнических работ, т.е. нам не пришлось тратить время. Выполнение работ подобного характера требует огромных практических навыков, именно ими и обладает Александр на самом высоком уровне. Профессионалы высшего пилотажа!"</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card h-100">
-                        <div class="mb-3" style="color: var(--primary);">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <h5 class="text-white">Данила</h5>
-                        <p class="text-gray mt-3">"Александр с командой составляет смету с указанием артикулов, заключает договор установленного образца и предоставляет гарантию на свои работы, по окончанию составляет акт выполненных работ. Консультирует, советует, делает качественно и в срок. Цена соответствует ранее заключенному договору и не меняется."</p>
-                    </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-outline-light btn-sm me-2" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="btn btn-outline-light btn-sm" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="prices" class="py-5">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="text-center mb-5">СТОИМОСТЬ <span class="text-orange">УСЛУГ</span></h2>
-                    <div class="bg-card p-4 rounded-4 border border-secondary border-opacity-25" style="background-color: var(--card-bg);" data-aos="fade-up">
-                        <div class="price-row"><span>Выезд и замер по городу</span><span class="text-success fw-bold">0 ₽</span></div>
-                        <div class="price-row"><span>Монтаж электрокотла</span><span class="text-orange fw-bold">от 10 000 ₽</span></div>
-                        <div class="price-row"><span>Укладка теплого пола (м²)</span><span class="text-orange fw-bold">750 ₽</span></div>
-                        <div class="price-row"><span>Монтаж радиатора отопления</span><span class="text-orange fw-bold">6 500 ₽</span></div>
-                    </div>
-                </div>
+    <section id="prices" class="py-5" style="background-color: #0a0a0a;">
+        <div class="container">
+            <h2 class="text-center mb-4">СТОИМОСТЬ РАБОТ</h2>
+            <div class="bg-card p-2 rounded-4 border border-secondary border-opacity-25" style="background-color: var(--card-bg);">
+                <div class="price-row"><span>Замер и консультация</span><span class="text-success fw-bold">БЕСПЛАТНО</span></div>
+                <div class="price-row"><span>Монтаж и обвязка электрокотла</span><span class="text-orange fw-bold">от 10 000 ₽</span></div>
+                <div class="price-row"><span>Укладка теплого пола (м²)</span><span class="text-orange fw-bold">750 ₽</span></div>
+                <div class="price-row"><span>Монтаж радиатора отопления</span><span class="text-orange fw-bold">6 500 ₽</span></div>
             </div>
         </div>
     </section>
 
     <section class="py-5">
-        <div class="container py-5">
-            <h2 class="text-center mb-5">ГДЕ МЫ <span class="text-orange">РАБОТАЕМ</span></h2>
-            <div class="map-container" data-aos="zoom-in">
-                <iframe src="https://yandex.ru/map-widget/v1/?ll=107.606342%2C51.833507&z=12" width="100%" height="100%" frameborder="0"></iframe>
+        <div class="container">
+            <h2 class="text-center mb-4">ГДЕ РАБОТАЕМ</h2>
+            <div class="map-container">
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=107.606342%2C51.833507&z=11" width="100%" height="100%" frameborder="0"></iframe>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black py-5 border-top border-secondary border-opacity-25">
-        <div class="container text-center">
-            <p class="text-gray small">© 2026 Александр Махутов. Улан-Удэ. Профессиональный монтаж инженерных систем.</p>
-            <div class="mt-3">
-                <a href="https://t.me/AlexanderMakhutov0" class="text-white opacity-50" target="_blank"><i class="fab fa-telegram fa-2x"></i></a>
-            </div>
-        </div>
-    </footer >
+    <footer class="bg-black py-4 text-center border-top border-secondary border-opacity-25">
+        <p class="text-gray small m-0">© 2026 Махутов и Команда. Улан-Удэ.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init({ duration: 800, once: true });</script>
+    <script>
+        // Отключаем тяжелую анимацию на смартфонах для плавной прокрутки
+        if (window.innerWidth > 768) {
+            AOS.init({ duration: 800, once: true });
+        } else {
+            AOS.init({ disable: true });
+        }
+    </script>
 </body>
 </html>
