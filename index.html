@@ -35,17 +35,17 @@
                 radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.08) 0%, transparent 40%);
             background-attachment: fixed;
             color: var(--text-main);
-            padding-bottom: 100px;
+            padding-bottom: 30px;
             line-height: 1.5;
         }
 
-        /* Call Banner Sticky Top */
+        /* Call Banner Top */
         .top-call-bar {
             background: linear-gradient(90deg, #10b981, #059669);
             color: #fff;
             text-align: center;
-            padding: 8px 12px;
-            font-size: 0.82rem;
+            padding: 9px 12px;
+            font-size: 0.85rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -140,7 +140,7 @@
         /* Container */
         .container {
             padding: 16px;
-            max-width: 620px;
+            max-width: 680px;
             margin: 0 auto;
         }
 
@@ -177,6 +177,79 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+        }
+
+        /* Interactive Matrix Cards (Hover / Tap reveal) */
+        .matrix-card {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .matrix-card:hover, .matrix-card.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .matrix-hover-hint {
+            font-size: 0.72rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .matrix-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(8, 12, 20, 0.9);
+            border-radius: 10px;
+            margin-top: 0;
+            padding: 0 12px;
+            border: 1px solid transparent;
+        }
+
+        .matrix-card:hover .matrix-details, .matrix-card.active .matrix-details {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 12px;
+            padding: 12px;
+            border-color: rgba(0, 242, 254, 0.3);
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .spec-item {
+            background: rgba(56, 119, 255, 0.1);
+            padding: 6px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+        }
+
+        .spec-item span {
+            color: var(--text-muted);
+            display: block;
+            font-size: 0.68rem;
+        }
+
+        .spec-item strong {
+            color: #fff;
         }
 
         /* Decoder */
@@ -246,14 +319,14 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--radius);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             overflow: hidden;
         }
 
         .accordion-header {
-            padding: 14px 16px;
+            padding: 12px 14px;
             font-weight: 700;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -276,10 +349,10 @@
 
         .accordion-body {
             display: none;
-            padding: 14px 16px;
-            background: rgba(8, 12, 20, 0.6);
+            padding: 12px 14px;
+            background: rgba(8, 12, 20, 0.65);
             border-top: 1px solid var(--card-border);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
         }
 
         .accordion-item.active .accordion-body {
@@ -290,7 +363,7 @@
             background: rgba(56, 119, 255, 0.12);
             border-radius: 8px;
             padding: 10px 12px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             border-left: 3px solid var(--primary);
             color: #e0e7ff;
         }
@@ -410,36 +483,6 @@
             font-weight: 600;
         }
 
-        /* Fixed Call Button Bottom */
-        .fixed-call-btn {
-            position: fixed;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 32px);
-            max-width: 580px;
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: #fff;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 0.95rem;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .fixed-call-btn:active {
-            transform: translateX(-50%) scale(0.97);
-        }
-
-        /* Lists */
         ul {
             padding-left: 18px;
             font-size: 0.85rem;
@@ -455,15 +498,15 @@
             font-size: 0.75rem;
             color: var(--text-muted);
             margin-top: 24px;
-            padding-bottom: 20px;
+            padding-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Верхний быстрый вызов -->
+    <!-- Единственная верхняя плашка звонка -->
     <a href="tel:+79024544045" class="top-call-bar">
-        📞 Нужна помощь эксперта? Звонок мне: Максим 8 (902) 454-40-45
+        📞 Звонок мне: Максим 8 (902) 454-40-45
     </a>
 
     <header>
@@ -474,7 +517,7 @@
     <nav>
         <button class="tab-btn active" onclick="openTab('block1', this)">1. Маркировка</button>
         <button class="tab-btn" onclick="openTab('block2', this)">2. Матрица ТВ</button>
-        <button class="tab-btn" onclick="openTab('block3', this)">3. Возражения</button>
+        <button class="tab-btn" onclick="openTab('block3', this)">3. Возражения (30)</button>
         <button class="tab-btn" onclick="openTab('block4', this)">4. Сценарии</button>
         <button class="tab-btn" onclick="openTab('block5', this)">5. Эксклюзивы VS</button>
     </nav>
@@ -489,7 +532,7 @@
                 
                 <div class="model-breakdown">
                     <div class="model-part">
-                        <div class="code">QE</div>
+                        <div classcode="code">QE</div>
                         <div class="label">Тип</div>
                     </div>
                     <div class="model-part">
@@ -541,164 +584,372 @@
             </div>
         </div>
 
-        <!-- БЛОК 2: Матрица технологий -->
+        <!-- БЛОК 2: Матрицы с детальной информацией при наведении -->
         <div id="block2" class="tab-content">
-            
-            <div class="card">
-                <span class="tech-tag tag-crystal">Crystal UHD</span>
-                <div class="card-title">Базовый 4K</div>
-                <p style="font-size: 0.85rem;">Качественная матрица с фирменным процессором Crystal 4K.</p>
-                <div class="analogy-box">«Надежная рабочая лошадка без переплат за технологии».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Просмотр ТВ, YouTube, новостей, подборка в спальню или на кухню.</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">💡 Наведи или нажми на карточку, чтобы открыть подробные технические данные:</p>
+
+            <!-- Crystal UHD -->
+            <div class="matrix-card" onclick="this.classList.toggle('active')">
+                <span class="tech-tag tag-crystal">Crystal UHD (Edge / Direct LED)</span>
+                <div class="card-title">1. Crystal UHD — Базовый 4K</div>
+                <p style="font-size: 0.85rem;">Классическая LED-технология с фирменным процессором обработки Crystal 4K.</p>
+                <div class="analogy-box">«Надежный телевизор для ежедневного просмотра без переплат».</div>
+                <div class="matrix-hover-hint">🔍 Наведи/нажми для подробностей ▼</div>
+
+                <div class="matrix-details">
+                    <div class="spec-grid">
+                        <div class="spec-item"><span>Тип матрицы:</span><strong>VA / Edge LED</strong></div>
+                        <div class="spec-item"><span>Яркость:</span><strong>~300-350 нит</strong></div>
+                        <div class="spec-item"><span>Частота:</span><strong>60 Гц</strong></div>
+                        <div class="spec-item"><span>Цветовой охват:</span><strong>80% DCI-P3</strong></div>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 6px;">
+                        <strong>Плюсы:</strong> Доступная цена, высокая контрастность VA-панелей, тонкий корпус (AirSlim в DU8000).<br>
+                        <strong>Главный аргумент:</strong> «Надежная рабочая лошадка с честным 4K и быстрой Smart OS Tizen».
+                    </p>
+                </div>
             </div>
 
-            <div class="card">
-                <span class="tech-tag tag-qled">QLED</span>
-                <div class="card-title">Квантовые точки</div>
-                <p style="font-size: 0.85rem;">Напыление из квантовых точек: чистые цвета, которые не выгорают от солнца.</p>
+            <!-- QLED -->
+            <div class="matrix-card" onclick="this.classList.toggle('active')">
+                <span class="tech-tag tag-qled">QLED (Quantum Dot)</span>
+                <div class="card-title">2. QLED — Квантовые точки</div>
+                <p style="font-size: 0.85rem;">Слой квантовых точек преобразует свет в 100% чистый объем цвета, который не выгорает со временем.</p>
                 <div class="analogy-box">«Словно надеть поляризационные очки в яркий солнечный день».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Яркие гостиные, дневной просмотр, мультики с детьми.</p>
+                <div class="matrix-hover-hint">🔍 Наведи/нажми для подробностей ▼</div>
+
+                <div class="matrix-details">
+                    <div class="spec-grid">
+                        <div class="spec-item"><span>Подсветка:</span><strong>Dual LED / Direct</strong></div>
+                        <div class="spec-item"><span>Яркость:</span><strong>~600-1000 нит</strong></div>
+                        <div class="spec-item"><span>Частота:</span><strong>60–120 Гц (от Q70)</strong></div>
+                        <div class="spec-item"><span>Цветовой охват:</span><strong>100% DCI-P3</strong></div>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 6px;">
+                        <strong>Плюсы:</strong> Сочные естественные цвета при любом освещении, не выгорает, двойная подсветка Dual LED для правильного тона.<br>
+                        <strong>Главный аргумент:</strong> «Цвета остаются сочными даже при ярком солнечной свете из окна».
+                    </p>
+                </div>
             </div>
 
-            <div class="card">
-                <span class="tech-tag tag-neo">Neo QLED</span>
-                <div class="card-title">Mini-LED</div>
-                <p style="font-size: 0.85rem;">Микро-светодиоды в 40 раз меньше обычных. Идеальный свет и ноль ореолов.</p>
-                <div class="analogy-box">«Светодиодный гирляндный щит с точечным контролем миллиметра экрана».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Игроки (PS5/Xbox), динамичный спорт, комнаты напротив окон.</p>
+            <!-- Neo QLED -->
+            <div class="matrix-card" onclick="this.classList.toggle('active')">
+                <span class="tech-tag tag-neo">Neo QLED (Quantum Mini-LED)</span>
+                <div class="card-title">3. Neo QLED — Микро-светодиоды</div>
+                <p style="font-size: 0.85rem;">Светодиоды Mini-LED в 40 раз меньше обычных. Точечный контроль света и абсолютная яркость.</p>
+                <div class="analogy-box">«Светодиодный щит с точечной подсветкой каждого миллиметра».</div>
+                <div class="matrix-hover-hint">🔍 Наведи/нажми для подробностей ▼</div>
+
+                <div class="matrix-details">
+                    <div class="spec-grid">
+                        <div class="spec-item"><span>Подсветка:</span><strong>Quantum Mini-LED</strong></div>
+                        <div class="spec-item"><span>Яркость:</span><strong>1500–3000 нит</strong></div>
+                        <div class="spec-item"><span>Частота:</span><strong>120–144 Гц</strong></div>
+                        <div class="spec-item"><span>Процессор:</span><strong>NQ4 / NQ8 AI</strong></div>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 6px;">
+                        <strong>Плюсы:</strong> Огромная яркость для HDR, отсутствует риск выгорания, идеальный инпут-лаг (5.8 мс) для PS5/PC.<br>
+                        <strong>Главный аргумент:</strong> «Бескомпромиссная яркость + черный цвет без ореолов вокруг текста».
+                    </p>
+                </div>
             </div>
 
-            <div class="card">
-                <span class="tech-tag tag-oled">OLED</span>
-                <div class="card-title">Самосветящиеся пиксели</div>
-                <p style="font-size: 0.85rem;">Каждый пиксель светится сам. В черных сценах он полностью выключается.</p>
-                <div class="analogy-box">«Идеальный бархатно-черный цвет и реалистичные контрасты».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Киноманы, просмотр авторского кино вечером в темноте.</p>
+            <!-- OLED -->
+            <div class="matrix-card" onclick="this.classList.toggle('active')">
+                <span class="tech-tag tag-oled">OLED (QD-OLED)</span>
+                <div class="card-title">4. OLED — Самосветящиеся пиксели</div>
+                <p style="font-size: 0.85rem;">Каждый из 8.3 млн пикселей светится сам. В черных сценах пиксели полностью выключаются.</p>
+                <div class="analogy-box">«Идеальный бархатно-черный цвет и реалистичная глубина».</div>
+                <div class="matrix-hover-hint">🔍 Наведи/нажми для подробностей ▼</div>
+
+                <div class="matrix-details">
+                    <div class="spec-grid">
+                        <div class="spec-item"><span>Матрица:</span><strong>QD-OLED (Samsung)</strong></div>
+                        <div class="spec-item"><span>Яркость:</span><strong>1000–1500 нит (Пик)</strong></div>
+                        <div class="spec-item"><span>Частота:</span><strong>144 Гц</strong></div>
+                        <div class="spec-item"><span>Контраст:</span><strong>Бесконечный (1:∞)</strong></div>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 6px;">
+                        <strong>Плюсы:</strong> Идеальные углы обзора, отсутствие задержки отклика (0.1 мс), квантовые точки делают чистый белый и сочный красный.<br>
+                        <strong>Главный аргумент:</strong> «Эталон кинематографичной картинки для просмотра фильмов вечерком в темноте».
+                    </p>
+                </div>
             </div>
 
-            <div class="card">
+            <!-- Lifestyle -->
+            <div class="matrix-card" onclick="this.classList.toggle('active')">
                 <span class="tech-tag tag-lifestyle">Lifestyle (The Frame)</span>
-                <div class="card-title">Интерьерный ТВ</div>
-                <p style="font-size: 0.85rem;">Матовое стекло без отблесков + рамки, как у настоящей арт-картины.</p>
-                <div class="analogy-box">«Живая картина на стене без глянцевых отражений».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Дизайнерские интерьеры, картинные галереи дома, просмотр без бликов.</p>
+                <div class="card-title">5. The Frame — Картинное антибликовое покрытие</div>
+                <p style="font-size: 0.85rem;">Интерьерный QLED с ультраматовым стеклом Matte Display. Не отражает лампы и окна.</p>
+                <div class="analogy-box">«Картина на стене без раздражающих глянцевых бликов».</div>
+                <div class="matrix-hover-hint">🔍 Наведи/нажми для подробностей ▼</div>
+
+                <div class="matrix-details">
+                    <div class="spec-grid">
+                        <div class="spec-item"><span>Покрытие:</span><strong>Matte Display (Матовое)</strong></div>
+                        <div class="spec-item"><span>Датчики:</span><strong>Движения и света</strong></div>
+                        <div class="spec-item"><span>Кронштейн:</span><strong>Slim Fit (В плотную)</strong></div>
+                        <div class="spec-item"><span>Рамки:</span><strong>Магнитные сменные</strong></div>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 6px;">
+                        <strong>Плюсы:</strong> Повешенный на стену выглядит как картина, датчик движения выключает экран, когда в комнате никого нет.<br>
+                        <strong>Главный аргумент:</strong> «Никаких черных прямоугольников на стене и 0% бликов от окон».
+                    </p>
+                </div>
             </div>
 
         </div>
 
-        <!-- БЛОК 3: Возражения -->
+        <!-- БЛОК 3: Возражения (30 штук) -->
         <div id="block3" class="tab-content">
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Нажми на вопрос, чтобы открыть готовый скрипт:</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">30 готовых ответов на самые частые сомнения покупателей:</p>
 
+            <!-- 1 -->
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">1. «Китайцы дешевле и там Android TV!»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">1. «Китайцы (TCL/Hisense) дешевле и там Android TV!»</div>
                 <div class="accordion-body">
-                    <div class="script-box">
-                        <strong>💬 Что отвечать:</strong><br>
-                        «В Samsung стоит мощный нейропроцессор, который на лету очищает и улучшает слабое видео до 4K. Tizen работает быстро даже через 3–5 лет, в отличие от тяжелого Android».
-                    </div>
-                    <div class="demo-box">
-                        <strong>🎯 Демонстрация:</strong><br>
-                        Запустите обычное ролик с YouTube 720p на Samsung и покажите четкость граней без мутных пикселей.
-                    </div>
+                    <div class="script-box"><strong>💬 Ответ:</strong> «У Samsung стоит нейропроцессор NQ, который в реальном времени очищает картинку low-res. Tizen летает и через 5 лет, а Android со временем забивается памятью».</div>
+                    <div class="demo-box"><strong>🎯 Демо:</strong> Запустите обычный YouTube в 720p на Samsung и покажите четкость граней.</div>
                 </div>
             </div>
 
+            <!-- 2 -->
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">2. «Зачем переплачивать за QLED, если есть 4K?»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">2. «Зачем переплачивать за QLED, если есть обычный 4K?»</div>
                 <div class="accordion-body">
-                    <div class="script-box">
-                        <strong>💬 Что отвечать:</strong><br>
-                        «4K дает детали, а QLED добавляет 100% объем цвета. Сочные оттенки не блекнут, если в комнату светит солнце или включена люстра».
-                    </div>
-                    <div class="demo-box">
-                        <strong>🎯 Демонстрация:</strong><br>
-                        Покажите яркий видеоролик под углом и сравните насыщенность красного/зеленого с базовым ТВ.
-                    </div>
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Обычный 4K дает пиксели, а QLED — 100% объем цвета. Оттенки не выгорают от света из окна».</div>
+                    <div class="demo-box"><strong>🎯 Демо:</strong> Покажите сочную траву или красный цвет под углом.</div>
                 </div>
             </div>
 
+            <!-- 3 -->
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">3. «У Tizen нельзя поставить сторонние APK!»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">3. «На Tizen нельзя ставить пиратские APK-файлы!»</div>
                 <div class="accordion-body">
-                    <div class="script-box">
-                        <strong>💬 Что отвечать:</strong><br>
-                        «Tizen — закрытая ОС, защищенная от вирусов и кражи данных. Все официальные кинотеатры (Кинопоиск, Иви, OKKO, VK Видео) легально летают из коробки».
-                    </div>
-                    <div class="demo-box">
-                        <strong>🎯 Демонстрация:</strong><br>
-                        Откройте главный экран, пролистайте приложения и покажите отзывчивость на нажатие пульта.
-                    </div>
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Tizen — закрытая ОС без вирусов. Все онлайн-кинотеатры (Кинопоиск, Иви, VK Видео, Rutube) ставятся в 1 клик, а сторонние плееры ставятся за 2 минуты через Media Station X».</div>
+                    <div class="demo-box"><strong>🎯 Демо:</strong> Откройте магазин Apps и покажите скорость установки приложений.</div>
                 </div>
             </div>
 
+            <!-- 4 -->
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">4. «У LG ярче картинка / лучше пульт!»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">4. «У LG пульт Magic Remote с указкой удобнее!»</div>
                 <div class="accordion-body">
-                    <div class="script-box">
-                        <strong>💬 Что отвечать:</strong><br>
-                        «У Samsung цвета сочнее благодаря квантовым точкам. А пульт SolarCell не использует батарейки и заряжается прямо от света в комнате».
-                    </div>
-                    <div class="demo-box">
-                        <strong>🎯 Демонстрация:</strong><br>
-                        Переверните пульт SolarCell, покажите фотоэлемент и встроенный аккумулятор.
-                    </div>
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Пульт Samsung SolarCell не требует батареек и заряжается от света ламп. А навигация колесиком быстрее, чем махать указкой по экрану».</div>
+                    <div class="demo-box"><strong>🎯 Демо:</strong> Переверните пульт SolarCell и покажите солнечную панель.</div>
                 </div>
             </div>
 
+            <!-- 5 -->
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">5. «Что с гарантией и сервисным обслуживанием?»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">5. «Что с официальной гарантией и сервисом?»</div>
                 <div class="accordion-body">
-                    <div class="script-box">
-                        <strong>💬 Что отвечать:</strong><br>
-                        «Вы покупаете технику с полноценной гарантией нашего магазина. Серверы обновлений работают стабильно, а Smart TV полностью адаптирован».
-                    </div>
-                    <div class="demo-box">
-                        <strong>🎯 Демонстрация:</strong><br>
-                        Зайдите в Настройки -> «Общие» и покажите русский интерфейс и активный профиль.
-                    </div>
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Вы получаете гарантию прямо от нашего магазина. Все Smart-функции и серверы обновлений работают стабильно в РФ».</div>
+                    <div class="demo-box"><strong>🎯 Демо:</strong> Откройте Меню -> Настройки -> Обновление ПО.</div>
                 </div>
             </div>
 
+            <!-- 6 -->
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">6. «Мне кажется, OLED выгорит через пару лет!»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">6. «Боюсь, что OLED выгорит от статических значков!»</div>
                 <div class="accordion-body">
-                    <div class="script-box">
-                        <strong>💬 Что отвечать:</strong><br>
-                        «В Samsung OLED стоят ИИ-алгоритмы защиты пикселей и графитовые пластины охлаждения. ТВ сам со временем незаметно сдвигает значки каналов».
-                    </div>
-                    <div class="demo-box">
-                        <strong>🎯 Демонстрация:</strong><br>
-                        Покажите меню «Панель управления OLED» со встроенными утилитами самоочистки.
-                    </div>
+                    <div class="script-box"><strong>💬 Ответ:</strong> «В Samsung QD-OLED стоит графитовый радиатор охлаждения и ИИ-алгоритмы Pixel Shift, которые микро-сдвигают статичные логотипы».</div>
+                    <div class="demo-box"><strong>🎯 Демо:</strong> Покажите пункт меню «Защита панели OLED».</div>
                 </div>
             </div>
 
+            <!-- 7 -->
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">7. «Цвета слишком ядовитые / неестественные!»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">7. «Цвета слишком ядовитые и выжигают глаза!»</div>
                 <div class="accordion-body">
-                    <div class="script-box">
-                        <strong>💬 Что отвечать:</strong><br>
-                        «Яркие цвета стоят в демонстрационном демо-режиме магазина. Дома включается режим FILMMAKER MODE, передающий точные цвета киностудий Hollywood».
-                    </div>
-                    <div class="demo-box">
-                        <strong>🎯 Демонстрация:</strong><br>
-                        Переключите режим изображения в меню с «Динамического» на «FILMMAKER MODE» или «Кино» прямо при клиенте.
-                    </div>
+                    <div class="script-box"><strong>💬 Ответ:</strong> «В магазине включен яркий Демо-режим. Дома включается режим FILMMAKER MODE с натуральными цветами Голливуда».</div>
+                    <div class="demo-box"><strong>🎯 Демо:</strong> Переключите режим изображения с «Динамический» на «FILMMAKER MODE».</div>
                 </div>
             </div>
 
+            <!-- 8 -->
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">8. «Зачем мне 8K, если контента в 8K нет?»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">8. «Зачем мне 8K, если контента 8K еще нет?»</div>
                 <div class="accordion-body">
-                    <div class="script-box">
-                        <strong>💬 Что отвечать:</strong><br>
-                        «Главный плюс 8K — это плотность пикселей. Даже стандартный Full HD или 4K видеопроцессор NQ8 AI масштабирует так, что вы не увидите пиксельной сетки даже с 1.5 метров на 75" диагонали».
-                    </div>
-                    <div class="demo-box">
-                        <strong>🎯 Демонстрация:</strong><br>
-                        Поставьте клиента близко к 75"+ 8K экрану и укажите на плавность текстур и отсутствия пикселей.
-                    </div>
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Смысл 8K — плотность пикселей. На больших диагоналях (75"+) вы не увидите пиксельную сетку даже впритык, а ИИ-процессор дорисовывает Full HD до 8K».</div>
+                    <div class="demo-box"><strong>🎯 Демо:</strong> Подведите клиента к 8K экрану на расстояние 1 метра.</div>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">9. «Почему в Samsung нет Dolby Vision?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Samsung использует открытый стандарт HDR10+ Adaptive. Он сам замеряет освещенность вашей комнаты через датчик и подстраивает сценическую яркость без переплат за лицензию Dolby».</div>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">10. «Звук у плоского телевизора слабый и без басов!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «У Samsung динамики расположены по всему периметру (Object Tracking Sound). А с функциями Q-Symphony динамики ТВ работают *совместно* с саундбаром».</div>
+                    <div class="demo-box"><strong>🎯 Демо:</strong> Включите трек с объёмным звуком OTS.</div>
+                </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">11. «У китайцев Mini-LED стоит в 2 раза дешевле Neo QLED!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Важно не только количество диодов, но и алгоритм управление зон. В Neo QLED диоды Mini-LED не дают засветов (ореолов) вокруг субтитров, в отличие от дешевых китайцев».</div>
+                </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">12. «Зачем 120–144 Гц, если я не играю в приставку?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «120 Гц нужно и для кино! Быстрые сцены (футбол, гонки, экшн) идут без рывков и стробоскопа за счет уплавнителя Motion Xcelerator».</div>
+                </div>
+            </div>
+
+            <!-- 13 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">13. «На матовом The Frame картинка кажется блеклой!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Матовое стекло убирает 99% отражений света и бликов. Картинка выглядит как настоящая картина маслом, а не как зеркало».</div>
+                </div>
+            </div>
+
+            <!-- 14 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">14. «Зачем мне встроенный микрофон, будут прослушивать?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Микрофон на ТВ выключается физическим тумблером снизу корпуса. На пульте кнопка голосового поиска работает только пока вы ее держите».</div>
+                </div>
+            </div>
+
+            <!-- 15 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">15. «OLED от LG дешевле, и они сами делают матрицы!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «У Samsung стоит технология QD-OLED (OLED + квантовые точки). Она дает чистый белый цвет и на 30% более высокую пиковую яркость».</div>
+                </div>
+            </div>
+
+            <!-- 16 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">16. «Почему в комплекте нет обычного кнопочного пульта?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Минималистичный пульт SolarCell управляет всеми подключенными приставками по HDMI CEC. Кнопки 0-9 вызваются в 1 клик на экране».</div>
+                </div>
+            </div>
+
+            <!-- 17 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">17. «Экран тонкий — сломается при повеске на стену!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Каркас корпуса выполнен из армированного авиационного алюминия и углеволокна. Он рассчитан на нагрузки при монтаже».</div>
+                </div>
+            </div>
+
+            <!-- 18 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">18. «Мне не нужен Smart TV, нужен просто экран под кабельное!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Даже при просмотре кабельного Smart-процессор убирает рябь и помехи сигнала, повышая четкость картинки».</div>
+                </div>
+            </div>
+
+            <!-- 19 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">19. «Почему оригинальный кронштейн Slim Fit стоит дороже?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Slim Fit вешает телевизор вплотную к стене без зазора (как картину), задействуя специальные утопленные пазы в корпусе».</div>
+                </div>
+            </div>
+
+            <!-- 20 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">20. «У знакомых сгорела LED-подсветка через несколько лет!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «В современных сериях QLED и Neo QLED стоят терморегулируемые светодиоды с системой распределения тепла, исключающие прогар».</div>
+                </div>
+            </div>
+
+            <!-- 21 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">21. «Дома через обычную антенну будет мыльная картинка!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Функция AI Upscaling анализирует каждый кадр и восстанавливает недостающие пиксели до 4K качества».</div>
+                </div>
+            </div>
+
+            <!-- 22 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">22. «Зачем режим Ambient / Art Mode, если ТВ выключен?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Вместо черного пятна в интерьере ТВ показывает картины, семейные фото или подстраивается под текстуру вашей стены».</div>
+                </div>
+            </div>
+
+            <!-- 23 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">23. «У китайцев гарантия 2–3 года, а у вас меньше!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Samsung покупают за надежность железа. Процент брака у Samsung в разы ниже, чем у брендов с удлиненной гарантией».</div>
+                </div>
+            </div>
+
+            <!-- 24 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">24. «Bluetooth-наушники будут отставать от видео?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «В Samsung стоит Bluetooth 5.2 с автоматической синхронизацией аудиопотока и нулевой задержкой».</div>
+                </div>
+            </div>
+
+            <!-- 25 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">25. «Зачем выносной блок One Connect?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «К телевизору идет всего один прозрачный незаметный провод. Все флешки, консоли и провода подключаются в блок в тумбе».</div>
+                </div>
+            </div>
+
+            <!-- 26 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">26. «У Samsung матрицы VA — у них плохие углы обзора!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «В сериях Q80 и выше стоит слой Ultra Viewing Angle, выравнивающий свет по бокам без потери контраста».</div>
+                </div>
+            </div>
+
+            <!-- 27 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">27. «Зачем брать саундбар Samsung, если есть другие бренда?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Только с родным саундбаром Samsung работает Q-Symphony (динамики ТВ синхронизируются с саундбаром, а не отключаются)».</div>
+                </div>
+            </div>
+
+            <!-- 28 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">28. «Глянцевый экран отражает все окна и люстру!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «В QLED и Neo QLED используется антибликовое покрытие Anti Reflection, преломляющее прямые лучи».</div>
+                </div>
+            </div>
+
+            <!-- 29 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">29. «Samsung собирается в разных странах — качество отличается?»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «Стандарты качества заводов Samsung едины по всему миру. Сборка контроллируется автороботами».</div>
+                </div>
+            </div>
+
+            <!-- 30 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">30. «ТВ слишком сложный в настройке для пожилых!»</div>
+                <div class="accordion-body">
+                    <div class="script-box"><strong>💬 Ответ:</strong> «При первом включении телефон сам передаст настройки Wi-Fi и каналы за 30 секунд через SmartThings».</div>
                 </div>
             </div>
 
@@ -706,7 +957,7 @@
             <div class="add-objection-box">
                 <h3>💬 Нет нужного возражения?</h3>
                 <p>Напишите вопрос или возражение покупателя. Сообщение откроется в чате с Максимом, и ответ будет добавлен на сайт:</p>
-                <textarea id="newObjectionText" placeholder="Например: Покупатель говорит, что у Samsung отваливается Wi-Fi..."></textarea>
+                <textarea id="newObjectionText" placeholder="Например: Покупатель спросил про подключение старого DVD-плеера..."></textarea>
                 <button class="btn-send" onclick="sendObjectionToMaxim()">
                     🚀 Отправить Максиму в WhatsApp
                 </button>
@@ -805,11 +1056,6 @@
         </div>
 
     </div>
-
-    <!-- Фиксированная кнопка «Звонок мне» снизу экрана -->
-    <a href="tel:+79024544045" class="fixed-call-btn">
-        📞 Звонок мне: Максим 8 (902) 454-40-45
-    </a>
 
     <script>
         function openTab(tabId, btn) {
