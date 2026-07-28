@@ -6,17 +6,18 @@
     <title>Шпаргалка продавца: Телевизоры Samsung</title>
     <style>
         :root {
-            --primary: #1428a0;
-            --primary-light: #eef2ff;
-            --accent: #00c3ff;
-            --dark: #0f172a;
-            --card-bg: #ffffff;
-            --bg: #f8fafc;
-            --border: #e2e8f0;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
+            --bg-dark: #080c14;
+            --card-bg: rgba(19, 27, 46, 0.85);
+            --card-border: #212e4a;
+            --primary: #3877ff;
+            --primary-glow: rgba(56, 119, 255, 0.35);
+            --accent: #00f2fe;
+            --accent-glow: rgba(0, 242, 254, 0.25);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
             --success: #10b981;
-            --radius: 12px;
+            --warning: #f59e0b;
+            --radius: 14px;
         }
 
         * {
@@ -28,53 +29,64 @@
         }
 
         body {
-            background-color: var(--bg);
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(56, 119, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
             color: var(--text-main);
-            padding-bottom: 80px;
+            padding-bottom: 90px;
             line-height: 1.5;
         }
 
-        /* Top Header */
+        /* Header */
         header {
-            background: var(--dark);
-            color: #fff;
+            background: rgba(8, 12, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
             padding: 16px;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         header h1 {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1.15rem;
+            font-weight: 800;
             letter-spacing: -0.02em;
             display: flex;
             align-items: center;
             gap: 8px;
+            color: #fff;
         }
 
         header h1 span {
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .badge {
-            background: rgba(0, 195, 255, 0.15);
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid rgba(0, 242, 254, 0.3);
             color: var(--accent);
-            font-size: 0.75rem;
-            padding: 4px 8px;
+            font-size: 0.72rem;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        /* Navigation Tabs */
+        /* Tabs Nav */
         nav {
             display: flex;
-            background: #fff;
-            border-bottom: 1px solid var(--border);
+            background: rgba(13, 19, 33, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--card-border);
             overflow-x: auto;
             position: sticky;
             top: 57px;
@@ -88,26 +100,28 @@
 
         .tab-btn {
             flex: 0 0 auto;
-            padding: 12px 16px;
+            padding: 14px 18px;
             border: none;
             background: none;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-muted);
             border-bottom: 3px solid transparent;
             cursor: pointer;
             white-space: nowrap;
+            transition: all 0.2s ease;
         }
 
         .tab-btn.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            text-shadow: 0 0 12px var(--accent-glow);
         }
 
-        /* Content Container */
+        /* Container */
         .container {
             padding: 16px;
-            max-width: 600px;
+            max-width: 620px;
             margin: 0 auto;
         }
 
@@ -117,129 +131,135 @@
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.25s ease-in-out;
+            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
+            from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Block Styles */
+        /* Cards */
         .card {
             background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border-radius: var(--radius);
             padding: 16px;
             margin-bottom: 12px;
-            border: 1px solid var(--border);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .card-title {
             font-size: 1rem;
             font-weight: 700;
-            color: var(--dark);
+            color: #fff;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        /* Model Decoder Box */
+        /* Decoder */
         .model-breakdown {
             display: flex;
-            gap: 4px;
+            gap: 6px;
             margin: 12px 0;
             overflow-x: auto;
-            padding-bottom: 8px;
+            padding-bottom: 4px;
         }
 
         .model-part {
-            background: var(--primary-light);
-            border: 1px solid rgba(20, 40, 160, 0.2);
-            border-radius: 8px;
-            padding: 8px;
+            background: rgba(56, 119, 255, 0.12);
+            border: 1px solid rgba(56, 119, 255, 0.3);
+            border-radius: 10px;
+            padding: 10px 8px;
             text-align: center;
-            min-width: 60px;
+            min-width: 62px;
+            flex: 1;
         }
 
         .model-part .code {
             font-weight: 800;
-            color: var(--primary);
-            font-size: 1.1rem;
+            color: var(--accent);
+            font-size: 1.15rem;
         }
 
         .model-part .label {
             font-size: 0.65rem;
             color: var(--text-muted);
-            margin-top: 2px;
-            font-weight: 600;
+            margin-top: 4px;
+            font-weight: 700;
             text-transform: uppercase;
         }
 
-        /* Tech Comparison Cards */
+        /* Tech Tags & Analogies */
         .tech-tag {
             display: inline-block;
             font-size: 0.7rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 4px;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 6px;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            letter-spacing: 0.03em;
         }
 
-        .tag-crystal { background: #e0f2fe; color: #0369a1; }
-        .tag-qled { background: #fef3c7; color: #b45309; }
-        .tag-neo { background: #fae8ff; color: #86198f; }
-        .tag-oled { background: #f1f5f9; color: #0f172a; }
-        .tag-lifestyle { background: #dcfce7; color: #15803d; }
+        .tag-crystal { background: rgba(3, 105, 161, 0.3); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+        .tag-qled { background: rgba(180, 83, 9, 0.3); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+        .tag-neo { background: rgba(134, 25, 143, 0.3); color: #f0abfc; border: 1px solid rgba(240, 171, 252, 0.3); }
+        .tag-oled { background: rgba(241, 245, 249, 0.15); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); }
+        .tag-lifestyle { background: rgba(21, 128, 61, 0.3); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
 
         .analogy-box {
-            background: #fffbe3;
-            border-left: 3px solid #f59e0b;
-            padding: 8px 12px;
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid var(--warning);
+            padding: 10px 12px;
             font-size: 0.85rem;
             border-radius: 0 8px 8px 0;
-            margin: 8px 0;
+            margin: 10px 0;
+            color: #fef08a;
             font-style: italic;
         }
 
         /* Accordion for Objections */
         .accordion-item {
             background: var(--card-bg);
-            border: 1px solid var(--border);
+            border: 1px solid var(--card-border);
             border-radius: var(--radius);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             overflow: hidden;
         }
 
         .accordion-header {
-            padding: 14px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            padding: 14px 16px;
+            font-weight: 700;
+            font-size: 0.88rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #fff;
+            color: #fff;
+            gap: 10px;
         }
 
         .accordion-header::after {
-            content: '+';
-            font-size: 1.2rem;
-            color: var(--primary);
-            font-weight: 700;
+            content: '＋';
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 800;
+            flex-shrink: 0;
         }
 
         .accordion-item.active .accordion-header::after {
-            content: '−';
+            content: '－';
         }
 
         .accordion-body {
             display: none;
-            padding: 14px;
-            background: #f8fafc;
-            border-top: 1px solid var(--border);
+            padding: 14px 16px;
+            background: rgba(8, 12, 20, 0.6);
+            border-top: 1px solid var(--card-border);
             font-size: 0.88rem;
         }
 
@@ -248,18 +268,20 @@
         }
 
         .script-box {
-            background: #eef2ff;
+            background: rgba(56, 119, 255, 0.12);
             border-radius: 8px;
             padding: 10px 12px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             border-left: 3px solid var(--primary);
+            color: #e0e7ff;
         }
 
         .demo-box {
-            background: #ecfdf5;
+            background: rgba(16, 185, 129, 0.12);
             border-radius: 8px;
             padding: 10px 12px;
             border-left: 3px solid var(--success);
+            color: #d1fae5;
         }
 
         /* Scenarios Cards */
@@ -272,28 +294,41 @@
             display: flex;
             gap: 12px;
             align-items: flex-start;
-            margin-bottom: 12px;
-            background: #fff;
-            padding: 12px;
+            margin-bottom: 10px;
+            background: var(--card-bg);
+            padding: 14px;
             border-radius: var(--radius);
-            border: 1px solid var(--border);
+            border: 1px solid var(--card-border);
         }
 
         .hit-num {
-            background: var(--primary);
-            color: #fff;
-            width: 24px;
-            height: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #000;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
+            font-size: 0.8rem;
+            font-weight: 900;
             flex-shrink: 0;
+            box-shadow: 0 0 10px var(--primary-glow);
         }
 
-        /* List Styling */
+        .vs-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* Lists */
         ul {
             padding-left: 18px;
             font-size: 0.85rem;
@@ -301,7 +336,7 @@
         }
 
         li {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .footer-note {
@@ -309,22 +344,23 @@
             font-size: 0.75rem;
             color: var(--text-muted);
             margin-top: 24px;
+            padding-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>📱 Samsung <span>TV Expert</span></h1>
-        <div class="badge">Шпаргалка 2026</div>
+        <h1>⚡ Samsung <span>Pro Sales</span></h1>
+        <div class="badge">PRO 2026</div>
     </header>
 
     <nav>
         <button class="tab-btn active" onclick="openTab('block1', this)">1. Маркировка</button>
         <button class="tab-btn" onclick="openTab('block2', this)">2. Матрица ТВ</button>
-        <button class="tab-btn" onclick="openTab('block3', this)">3. Возражения</button>
-        <button class="tab-btn" onclick="openTab('block4', this)">4. Подбор</button>
-        <button class="tab-btn" onclick="openTab('block5', this)">5. Фишки (10 сек)</button>
+        <button class="tab-btn" onclick="openTab('block3', this)">3. Возражения (10)</button>
+        <button class="tab-btn" onclick="openTab('block4', this)">4. Сценарии</button>
+        <button class="tab-btn" onclick="openTab('block5', this)">5. Эксклюзивы VS</button>
     </nav>
 
     <div class="container">
@@ -332,8 +368,8 @@
         <!-- БЛОК 1: Маркировка -->
         <div id="block1" class="tab-content active">
             <div class="card">
-                <div class="card-title">Пример чтения артикула</div>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">Разбери модель <strong>QE65QN90D</strong> за 3 секунды:</p>
+                <div class="card-title">Разбор артикула за 3 секунды</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Пример: <strong>QE 65 QN 90 D</strong></p>
                 
                 <div class="model-breakdown">
                     <div class="model-part">
@@ -350,7 +386,7 @@
                     </div>
                     <div class="model-part">
                         <div class="code">90</div>
-                        <div class="label">Уровень</div>
+                        <div class="label">Класс</div>
                     </div>
                     <div class="model-part">
                         <div class="code">D</div>
@@ -362,25 +398,25 @@
             <div class="card">
                 <div class="card-title">1. Технология (Буквы)</div>
                 <ul>
-                    <li><strong>CU / DU</strong> — Crystal UHD (Базовый 4K, LED).</li>
-                    <li><strong>Q / Q60–Q80</strong> — QLED (Квантовые точки).</li>
-                    <li><strong>QN</strong> — Neo QLED (Mini-LED подсветка).</li>
-                    <li><strong>S / S90–S95</strong> — OLED (Самосветящиеся пиксели).</li>
+                    <li><strong>CU / DU</strong> — Crystal UHD (Базовый 4K на фоновой LED).</li>
+                    <li><strong>Q / Q60–Q80</strong> — QLED (Квантовые точки: 100% цвет).</li>
+                    <li><strong>QN</strong> — Neo QLED (Mini-LED: микро-диоды + локальный свет).</li>
+                    <li><strong>S / S90–S95</strong> — OLED (Самосветящиеся пиксели + черный).</li>
                     <li><strong>LS</strong> — Lifestyle (Frame, Serif, Freestyle).</li>
                 </ul>
             </div>
 
             <div class="card">
-                <div class="card-title">2. Класс / Серия (Цифры)</div>
+                <div class="card-title">2. Уровень и серия (Цифры)</div>
                 <ul>
                     <li><strong>60–70:</strong> Базовый уровень (60 Гц, стандартный звук).</li>
-                    <li><strong>80–90:</strong> Премиум (120 Гц, локальное затемнение, процессор с ИИ).</li>
-                    <li><strong>800–900:</strong> Флагманы 8K (максимальное качество).</li>
+                    <li><strong>80–90:</strong> Премиум (120–144 Гц, ИИ-процессор, локальное затемнение).</li>
+                    <li><strong>800–900:</strong> Флагманы 8K (предельная четкость без пиксельной сетки).</li>
                 </ul>
             </div>
 
             <div class="card">
-                <div class="card-title">3. Год выпуска (Буква в конце)</div>
+                <div class="card-title">3. Год выпуска (Буква)</div>
                 <ul>
                     <li><strong>D</strong> — 2024–2025 гг.</li>
                     <li><strong>C</strong> — 2023 г.</li>
@@ -395,59 +431,59 @@
             <div class="card">
                 <span class="tech-tag tag-crystal">Crystal UHD</span>
                 <div class="card-title">Базовый 4K</div>
-                <p style="font-size: 0.85rem;">Качественная базовая матрица с быстрым Smart TV.</p>
-                <div class="analogy-box">«Надежная рабочая лошадка без переплат».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Идеально:</strong> Просмотр ТВ/новостей, YouTube, на кухню или в спальню.</p>
+                <p style="font-size: 0.85rem;">Качественная матрица с фирменным процессором Crystal 4K.</p>
+                <div class="analogy-box">«Надежная рабочая лошадка без переплат за технологии».</div>
+                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Просмотр ТВ, YouTube, новостей, подборка в спальню или на кухню.</p>
             </div>
 
             <div class="card">
                 <span class="tech-tag tag-qled">QLED</span>
                 <div class="card-title">Квантовые точки</div>
-                <p style="font-size: 0.85rem;">100% цветовой объем и высокая яркость, которая не блекнет.</p>
-                <div class="analogy-box">«Как надеть поляризационные очки в солнечный день».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Идеально:</strong> Светлые гостиные, дневной просмотр, мультики с детьми.</p>
+                <p style="font-size: 0.85rem;">Напыление из квантовых точек: чистые цвета, которые не выгорают от солнца.</p>
+                <div class="analogy-box">«Словно надеть поляризационные очки в яркий солнечный день».</div>
+                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Яркие гостиные, дневной просмотр, мультики с детьми.</p>
             </div>
 
             <div class="card">
                 <span class="tech-tag tag-neo">Neo QLED</span>
                 <div class="card-title">Mini-LED</div>
-                <p style="font-size: 0.85rem;">Тысячи микро-диодов для глубокого черного и отсутствия засветов.</p>
-                <div class="analogy-box">«Светодиодный гирляндный щит с точечным контролем света».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Идеально:</strong> Игры (PS5/Xbox), динамичное кино, комнаты напротив окон.</p>
+                <p style="font-size: 0.85rem;">Микро-светодиоды в 40 раз меньше обычных. Идеальный свет и ноль ореолов.</p>
+                <div class="analogy-box">«Светодиодный гирляндный щит с точечным контролем миллиметра экрана».</div>
+                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Игроки (PS5/Xbox), динамичный спорт, комнаты напротив окон.</p>
             </div>
 
             <div class="card">
                 <span class="tech-tag tag-oled">OLED</span>
                 <div class="card-title">Самосветящиеся пиксели</div>
-                <p style="font-size: 0.85rem;">Каждый пиксель выключается полностью, давая бесконечный контраст.</p>
-                <div class="analogy-box">«Идеальный бархатно-черный цвет».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Идеально:</strong> Киноманы, просмотр фильмов по вечерам в темноте.</p>
+                <p style="font-size: 0.85rem;">Каждый пиксель светится сам. В черных сценах он полностью выключается.</p>
+                <div class="analogy-box">«Идеальный бархатно-черный цвет и реалистичные контрасты».</div>
+                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Киноманы, просмотр авторского кино вечером в темноте.</p>
             </div>
 
             <div class="card">
                 <span class="tech-tag tag-lifestyle">Lifestyle (The Frame)</span>
-                <div class="card-title">Дизайнерская серия</div>
-                <p style="font-size: 0.85rem;">Матовый антибликовый экран + интерьерный дизайн в виде картины.</p>
-                <div class="analogy-box">«Живая картина на стене без бликов и отблесков».</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Идеально:</strong> Стильные интерьеры, картинная галерея дома.</p>
+                <div class="card-title">Интерьерный ТВ</div>
+                <p style="font-size: 0.85rem;">Матовое стекло без отблесков + рамки, как у настоящей арт-картины.</p>
+                <div class="analogy-box">«Живая картина на стене без глянцевых отражений».</div>
+                <p style="font-size: 0.8rem; color: var(--text-muted);"><strong>Кому:</strong> Дизайнерские интерьеры, картинные галереи дома, просмотр без бликов.</p>
             </div>
 
         </div>
 
         <!-- БЛОК 3: Возражения -->
         <div id="block3" class="tab-content">
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Нажми на возражение, чтобы открыть скрипт:</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Нажми на вопрос, чтобы открыть готовый скрипт:</p>
 
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">1. «Китайцы дешевле и там Android TV!»</div>
                 <div class="accordion-body">
                     <div class="script-box">
                         <strong>💬 Что отвечать:</strong><br>
-                        «В Samsung стоит мощный нейропроцессор, который дотягивает любое видео до 4K. А Tizen оптимизирован так, что не тормозит через полгода в отличие от Android».
+                        «В Samsung стоит мощный нейропроцессор, который на лету очищает и улучшает слабое видео до 4K. Tizen работает быстро даже через 3–5 лет, в отличие от тяжелого Android».
                     </div>
                     <div class="demo-box">
                         <strong>🎯 Демонстрация:</strong><br>
-                        Включите обычное видео низкого качества с YouTube на Samsung и покажите отсутствие шумов и четкость картинки.
+                        Запустите обычное ролик с YouTube 720p на Samsung и покажите четкость граней без мутных пикселей.
                     </div>
                 </div>
             </div>
@@ -457,11 +493,11 @@
                 <div class="accordion-body">
                     <div class="script-box">
                         <strong>💬 Что отвечать:</strong><br>
-                        «Обычный 4K дает детализацию, а QLED добавляет яркость и чистый цвет. Картинка не выцветает, когда в комнату светит солнце».
+                        «4K дает детали, а QLED добавляет 100% объем цвета. Сочные оттенки не блекнут, если в комнату светит солнце или включена люстра».
                     </div>
                     <div class="demo-box">
                         <strong>🎯 Демонстрация:</strong><br>
-                        Покажите сочный ролик с природой под углом и сравните насыщенность цветов с базовым 4K.
+                        Покажите яркий видеоролик под углом и сравните насыщенность красного/зеленого с базовым ТВ.
                     </div>
                 </div>
             </div>
@@ -471,11 +507,11 @@
                 <div class="accordion-body">
                     <div class="script-box">
                         <strong>💬 Что отвечать:</strong><br>
-                        «Tizen работает из коробки: все онлайн-кинотеатры уже здесь и летают. При этом закрытая система гарантирует защиту от вирусов и утечки данных».
+                        «Tizen — закрытая ОС, защищенная от вирусов и кражи данных. Все официальные кинотеатры (Кинопоиск, Иви, OKKO, VK Видео) легально летают из коробки».
                     </div>
                     <div class="demo-box">
                         <strong>🎯 Демонстрация:</strong><br>
-                        Покажите мгновенный отклик меню и наличие всех популярных сервисов (Кинопоиск, Иви).
+                        Откройте главный экран, пролистайте приложения и покажите отзывчивость на нажатие пульта.
                     </div>
                 </div>
             </div>
@@ -485,39 +521,95 @@
                 <div class="accordion-body">
                     <div class="script-box">
                         <strong>💬 Что отвечать:</strong><br>
-                        «У Samsung цвета насыщеннее из-за квантовых точек, а пульт SolarCell вообще не требует батареек и заряжается от света».
+                        «У Samsung цвета сочнее благодаря квантовым точкам. А пульт SolarCell не использует батарейки и заряжается прямо от света в комнате».
                     </div>
                     <div class="demo-box">
                         <strong>🎯 Демонстрация:</strong><br>
-                        Переверните пульт SolarCell и покажите солнечную панель на обороте.
+                        Переверните пульт SolarCell, покажите фотоэлемент и встроенный аккумулятор.
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">5. «Что с гарантией и обновлениями?»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">5. «Что с гарантией и сервисным обслуживанием?»</div>
                 <div class="accordion-body">
                     <div class="script-box">
                         <strong>💬 Что отвечать:</strong><br>
-                        «Вы получаете полноценную гарантию нашего магазина. Серверы обновлений работают штатно, Smart TV и интерфейс полностью русскоязычные».
+                        «Вы покупаете технику с полноценной гарантией нашего магазина. Серверы обновлений работают стабильно, а Smart TV полностью адаптирован».
                     </div>
                     <div class="demo-box">
                         <strong>🎯 Демонстрация:</strong><br>
-                        Откройте Настройки -> «Обновление ПО» и покажите работающий русский интерфейс.
+                        Зайдите в Настройки -> «Общие» и покажите русский интерфейс и активный профиль.
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">6. «Мне кажется, OLED выгорит!»</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">6. «Мне кажется, OLED выгорит через пару лет!»</div>
                 <div class="accordion-body">
                     <div class="script-box">
                         <strong>💬 Что отвечать:</strong><br>
-                        «В Samsung OLED стоят ИИ-алгоритмы защиты пикселей и графитовые пластины охлаждения. ТВ сам незаметно смещает статические логотипы».
+                        «В Samsung OLED стоят ИИ-алгоритмы защиты пикселей и графитовые пластины охлаждения. ТВ сам со временем незаметно сдвигает значки каналов».
                     </div>
                     <div class="demo-box">
                         <strong>🎯 Демонстрация:</strong><br>
-                        Покажите меню «Панель управления OLED» со встроенными функциями очистки пикселей.
+                        Покажите меню «Панель управления OLED» со встроенными утилитами самоочистки.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">7. «Цвета слишком ядовитые / неестественные!»</div>
+                <div class="accordion-body">
+                    <div class="script-box">
+                        <strong>💬 Что отвечать:</strong><br>
+                        «Яркие цвета стоят в демонстрационном демо-режиме магазина. Дома включается режим FILMMAKER MODE, передающий точные цвета киностудий Hollywood».
+                    </div>
+                    <div class="demo-box">
+                        <strong>🎯 Демонстрация:</strong><br>
+                        Переключите режим изображения в меню с «Динамического» на «FILMMAKER MODE» или «Кино» прямо при клиенте.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">8. «Зачем мне 8K, если контента в 8K нет?»</div>
+                <div class="accordion-body">
+                    <div class="script-box">
+                        <strong>💬 Что отвечать:</strong><br>
+                        «Главный плюс 8K — это плотность пикселей. Даже стандартный Full HD или 4K видеопроцессор NQ8 AI масштабирует так, что вы не увидите пиксельной сетки даже с 1.5 метров на 75" диагонали».
+                    </div>
+                    <div class="demo-box">
+                        <strong>🎯 Демонстрация:</strong><br>
+                        Поставьте клиента близко к 75"+ 8K экрану и укажите на плавность текстур и отсутствия пикселей.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">9. «Sony показывает лучше за счет процессора Bravia XR!»</div>
+                <div class="accordion-body">
+                    <div class="script-box">
+                        <strong>💬 Что отвечать:</strong><br>
+                        «Sony ставит матрицы сторонних производителей, а Samsung сам разрабатывает и панели, и нейропроцессоры NQ AI. При тех же характеристиках Samsung дает выше яркость и доступнее по цене».
+                    </div>
+                    <div class="demo-box">
+                        <strong>🎯 Демонстрация:</strong><br>
+                        Сравните пиковую яркость и цену аналогов на ценнике.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">10. «Куплю дешевый ТВ + приставку Mi Box / Apple TV!»</div>
+                <div class="accordion-body">
+                    <div class="script-box">
+                        <strong>💬 Что отвечать:</strong><br>
+                        «Приставка даст приложения, но не улучшит слабую матрицу и дешевый процессор. Качество картинки, контраст и герцовку определяет именно сам ТВ».
+                    </div>
+                    <div class="demo-box">
+                        <strong>🎯 Демонстрация:</strong><br>
+                        Покажите плавность динамических сцен 120 Гц на Samsung.
                     </div>
                 </div>
             </div>
@@ -528,54 +620,56 @@
         <div id="block4" class="tab-content">
             
             <div class="card scenario-card">
-                <div class="card-title">🎮 Гейминг (PS5 / Xbox)</div>
+                <div class="card-title">🎮 Гейминг (PS5 / Xbox / PC)</div>
                 <p style="font-size: 0.85rem;"><strong>Предлагай:</strong> Neo QLED (QN85/QN90) или OLED (S90/S95).</p>
-                <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; margin-top: 4px;">Аргумент: 120–144 Гц, HDMI 2.1, отклик 5.8 мс и Game Bar.</p>
+                <p style="font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-top: 4px;">Аргумент: 120–144 Гц, 4 порта HDMI 2.1, инпут-лаг 5.8 мс, панель Game Bar.</p>
             </div>
 
             <div class="card scenario-card">
                 <div class="card-title">☀️ Очень светлая комната</div>
                 <p style="font-size: 0.85rem;"><strong>Предлагай:</strong> Neo QLED или The Frame.</p>
-                <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; margin-top: 4px;">Аргумент: Высокая яркость и матовое покрытие Matte Display без бликов.</p>
+                <p style="font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-top: 4px;">Аргумент: Запредельная яркость + матовое антибликовое покрытие Matte Display.</p>
             </div>
 
             <div class="card scenario-card">
                 <div class="card-title">🎬 Киноманы (просмотр в темноте)</div>
                 <p style="font-size: 0.85rem;"><strong>Предлагай:</strong> Samsung OLED или Neo QLED.</p>
-                <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; margin-top: 4px;">Аргумент: Абсолютно черный цвет без серого налета в темных сценах.</p>
+                <p style="font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-top: 4px;">Аргумент: Настоящий глубокий черный без серой засветки по краям.</p>
             </div>
 
             <div class="card scenario-card">
                 <div class="card-title">👵 Для пожилых родителей</div>
-                <p style="font-size: 0.85rem;"><strong>Предлагай:</strong> Crystal UHD (CU8000/DU8000) или QLED Q60.</p>
-                <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; margin-top: 4px;">Аргумент: Простой пульт, усиление голоса и высокая контрастность.</p>
+                <p style="font-size: 0.85rem;"><strong>Предлагай:</strong> Crystal UHD (DU8000) или QLED Q60.</p>
+                <p style="font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-top: 4px;">Аргумент: Понятный пульт, усиление речи AVA и сочная картинка.</p>
             </div>
 
             <div class="card scenario-card">
                 <div class="card-title">🖼️ Элемент интерьера</div>
                 <p style="font-size: 0.85rem;"><strong>Предлагай:</strong> The Frame (LS03).</p>
-                <p style="font-size: 0.8rem; color: var(--primary); font-weight: 600; margin-top: 4px;">Аргумент: Выглядит как картина, сменные магнитные рамки.</p>
+                <p style="font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-top: 4px;">Аргумент: Выглядит как картина, сменные магнитные рамки, режим Art Mode.</p>
             </div>
 
         </div>
 
-        <!-- БЛОК 5: Быстрые фишки -->
+        <!-- БЛОК 5: Эксклюзивы VS -->
         <div id="block5" class="tab-content">
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Фишки, которые можно показать клиенту за 10 секунд:</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Фишки, которых нет у конкурентов (демонстрация за 10 сек):</p>
 
             <div class="hit-item">
                 <div class="hit-num">1</div>
                 <div>
-                    <strong>Q-Symphony</strong>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Динамики ТВ и саундбара работают одновременно, создавая объемное звучание.</p>
+                    <strong>Q-Symphony (Объемный звук)</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Динамики ТВ и саундбара работают вместе как единый оркестр.</p>
+                    <span class="vs-tag">VS LG/Sony: У конкурентов динамики ТВ выключаются</span>
                 </div>
             </div>
 
             <div class="hit-item">
                 <div class="hit-num">2</div>
                 <div>
-                    <strong>Пульт SolarCell</strong>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Заряжается от комнатного света — забудете о покупке батареек навсегда.</p>
+                    <strong>Пульт SolarCell на солнечной батарее</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Заряжается от света ламп и солнца. Никаких батареек.</p>
+                    <span class="vs-tag">VS Все: Конкуренты до сих пор требуют батарейки</span>
                 </div>
             </div>
 
@@ -583,7 +677,8 @@
                 <div class="hit-num">3</div>
                 <div>
                     <strong>Matte Display (Матовый экран)</strong>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Полностью поглощает отблески ламп и окон, превращая экран в холст.</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Настоящая матовая текстура полностью убирает отражения света.</p>
+                    <span class="vs-tag">VS Китайцы/LG: У них глянец превращается в зеркало</span>
                 </div>
             </div>
 
@@ -591,41 +686,66 @@
                 <div class="hit-num">4</div>
                 <div>
                     <strong>Game Bar (Игровая панель)</strong>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Вызывается за 1 секунду: сменит формат на 21:9, включит прицел и счетчик FPS.</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Панель со сменой формата на 21:9 / 32:9, прицелом и читерским зумом.</p>
+                    <span class="vs-tag">VS Конкуренты: Нет поддержки ультрашироких форматов</span>
                 </div>
             </div>
 
             <div class="hit-item">
                 <div class="hit-num">5</div>
                 <div>
-                    <strong>Tap View</strong>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Коснитесь смартфоном Samsung к рамке ТВ — экран телефона мгновенно появится на ТВ.</p>
+                    <strong>Tap View (Трансляция в 1 касание)</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Прикоснитесь смартфоном к рамке ТВ — экран дублируется мгновенно.</p>
+                    <span class="vs-tag">VS Все: Нет долгих поисков устройства в меню</span>
+                </div>
+            </div>
+
+            <div class="hit-item">
+                <div class="hit-num">6</div>
+                <div>
+                    <strong>SmartThings Hub (Центр умного дома)</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">ТВ сам управляет датчиками, светом и роботами Zigbee/Matter без шлюзов.</p>
+                    <span class="vs-tag">VS Конкуренты: Требуют покупки отдельного хаба</span>
+                </div>
+            </div>
+
+            <div class="hit-item">
+                <div class="hit-num">7</div>
+                <div>
+                    <strong>Smart Calibration (Автокалибровка)</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Калибровка профессионального цвета смартфона за 1 минуту.</p>
+                    <span class="vs-tag">VS Все: У остальных калибровка стоит денег и вызова мастера</span>
+                </div>
+            </div>
+
+            <div class="hit-item">
+                <div class="hit-num">8</div>
+                <div>
+                    <strong>Режим Ambient / Art Mode</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Вместо черного прямоугольника — шедевры искусства или виджеты погоды.</p>
+                    <span class="vs-tag">VS Конкуренты: Потребляют в разы больше энергии в простое</span>
                 </div>
             </div>
 
         </div>
 
         <div class="footer-note">
-            Samsung Retail Sales Guide • 2026
+            Samsung Retail Sales Guide • Dark Edition 2026
         </div>
 
     </div>
 
     <script>
         function openTab(tabId, btn) {
-            // Hide all tab contents
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Remove active class from buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(button => button.classList.remove('active'));
 
-            // Show current tab & set button active
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
 
-            // Scroll tab into view
             btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
 
